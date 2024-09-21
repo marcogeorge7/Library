@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Admin\Resources\AuthorResource;
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -57,5 +58,19 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])->authGuard("web");
+    }
+    public function register(): void
+    {
+        parent::register();
+
+        \Filament\Actions\CreateAction::configureUsing(function (Action $action) {
+            return $action
+                ->icon('heroicon-o-plus');
+        });
+
+        \Filament\Tables\Actions\ViewAction::configureUsing(function (\Filament\Tables\Actions\ViewAction $action) {
+            return $action
+                ->icon('heroicon-o-eye');
+        });
     }
 }
