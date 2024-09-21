@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "name": "طقس",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 2,
+    "name": "أبحاث",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 3,
+    "name": "لاهوتيات",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 4,
+    "name": "قصص ومسرحيات",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 5,
+    "name": "تاريخ كنيسة",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 6,
+    "name": "عهد جديد",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 7,
+    "name": "عهد قديم",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 8,
+    "name": "أعياد مسيحية",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 9,
+    "name": "أسرار الكنيسة",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 10,
+    "name": "صلوات كنسية",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 11,
+    "name": "سير شهداء",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 12,
+    "name": "سير قديسين",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 13,
+    "name": "روحيات",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 14,
+    "name": "شباب و أسرة",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 15,
+    "name": "الخدمة",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 16,
+    "name": "مجموعة البابا شنودة الثاث",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 17,
+    "name": "شخصيات عهد جديد",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 18,
+    "name": "دراسات عهد جديد",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 19,
+    "name": "شخصيات عهد قديم",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 20,
+    "name": "دراسات عهد قديم",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 21,
+    "name": "أقوال آباء",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 22,
+    "name": "عموميات الكتاب المقدس",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 23,
+    "name": "تسالى مسيحيه",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  },
+  {
+    "id": 24,
+    "name": "دفاعيات",
+    "slug": null,
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null
+  }
+]
