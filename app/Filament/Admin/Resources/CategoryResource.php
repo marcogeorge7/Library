@@ -9,6 +9,9 @@ use App\Filament\Admin\Resources\CategoryResource\Pages\ViewCategory;
 use App\Models\Category;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -27,6 +30,8 @@ class CategoryResource extends Resource
     protected static ?string $modelLabel = "الفئة";
 
     protected static ?string $pluralModelLabel = "الفئات";
+
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Form $form): Form
     {
@@ -59,6 +64,18 @@ class CategoryResource extends Resource
                     RestoreBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist->schema([
+            Section::make(__("Category Details"))
+                ->schema([
+                    TextEntry::make('name')
+                        ->label(__("Category Name"))
+                        ->icon("heroicon-o-tag"),
+                ]),
+        ]);
     }
 
     public static function getPages(): array

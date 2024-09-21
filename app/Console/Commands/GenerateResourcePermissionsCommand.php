@@ -17,38 +17,9 @@ class GenerateResourcePermissionsCommand extends Command
     public function handle(): void
     {
         $modelName = $this->argument('modelName');
-        $this->createCrudPermissions($modelName);
-        $this->syncPermissionsToSuperadmin();
+        GetResourcesForPermissions::createCrudPermissions($modelName);
+        GetResourcesForPermissions::syncPermissionsToSuperadmin();
         $this->info("Generating {$modelName} Permissions");
 
-    }
-
-    protected function createCrudPermissions($resource)
-    {
-        $permissions = GetResourcesForPermissions::generateResourcePermissions($resource);
-        $permissions->each(
-            function ($permission) use ($resource) {
-                Permission::firstOrCreate([
-                    'guard_name' => "web",
-                    'group' => $resource,
-                    'name' => $permission,
-                ]);
-            }
-        );
-    }
-
-    private function syncPermissionsToSuperadmin()
-    {
-        $role = Role::where('name', "Admin")->first();
-
-        $role->givePermissionTo(Permission::all());
-
-        if (app()->isProduction()) {
-            return;
-        }
-
-        $users =User::role("Admin")->get();
-
-        $users->each(fn ($employee) => $employee->assignRole($role));
     }
 }
