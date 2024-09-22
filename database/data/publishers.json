@@ -1,0 +1,2834 @@
+[
+  {
+    "id": 1,
+    "name": "مكتبة المحبة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 2,
+    "name": "دار الكتاب المقدس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 3,
+    "name": "مكتبة المنار",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 4,
+    "name": "دير القديس الأنبا بيشوي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 5,
+    "name": "دير العذراء السريان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 6,
+    "name": "دار المطرانية بحلوان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 7,
+    "name": "دير المحرق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 8,
+    "name": "ك. مارجرجس إسبورتنج",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 9,
+    "name": "الأنبا رويس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 10,
+    "name": "مكتبة مدارس الأحد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 11,
+    "name": "المكتبة المرقسية بملوي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 12,
+    "name": "معهد الدراسات القبطية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 13,
+    "name": "معهد ديديموس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 14,
+    "name": "ك. مارمينا شبرا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 15,
+    "name": "مركز الثقافة الشرقية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 16,
+    "name": "دار المعارف",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 17,
+    "name": "أباء الكنيسة القبطية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 18,
+    "name": "دار فيلوباترون للنشر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 19,
+    "name": "مطرانية أسوان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 20,
+    "name": "ك. السيده العذراء بالدقي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 21,
+    "name": "ك. مارمرقس والبابا بطرس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 22,
+    "name": "ك. أبي سفين بزفتى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 23,
+    "name": "أسقفية الشباب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 24,
+    "name": "بشاره بسطوروس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 25,
+    "name": "دار النشر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 26,
+    "name": "بيت التكريس بحلوان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 27,
+    "name": "دار أبو مقار",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 28,
+    "name": "ك. الشهيده رفقه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 29,
+    "name": "دير العذراء بالمحرق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 30,
+    "name": "أبناء الأنبا شنوده",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 31,
+    "name": "أبناء البابا كيرلس السادس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 32,
+    "name": "مكتبة دير البراموس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 33,
+    "name": "مكتبة مارجرجس شيكولاني",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 34,
+    "name": "دير الأنبا أنطونيوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 35,
+    "name": "الكلية الأكليركية بالمنيا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 36,
+    "name": "مطرانية بنى سويف",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 37,
+    "name": "لجنة النشر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 38,
+    "name": "لوجوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 39,
+    "name": "دار الثقافه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 40,
+    "name": "ك. العذراء المعلقه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 41,
+    "name": "مركز خدمة التربيه الكنسيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 42,
+    "name": "المرقسيه الكبرى-إسكندريه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 43,
+    "name": "ك. العذراء المعادى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 44,
+    "name": "دير القديسين بجبل طود",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 45,
+    "name": "ك. الملاك البحري",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 46,
+    "name": "مطرانية الفيوم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 47,
+    "name": "دار النشر هاتييه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 48,
+    "name": "إير إفميفى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 49,
+    "name": "المكتبه اللاهوتيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 50,
+    "name": "مطرانية مغاغه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 51,
+    "name": "دار النشر الأسقفيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 52,
+    "name": "مطرانية بنى مزار",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 53,
+    "name": "دير القديس أنبا مقار",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 54,
+    "name": "الكليه الإكليريكيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 55,
+    "name": "أبناء الأنبا مكارى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 56,
+    "name": "مدارس الأحد بالجيزه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 57,
+    "name": "لجنة ترجمة الكتاب المقدس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 58,
+    "name": "مطرانية دمياط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 59,
+    "name": "دير البراموس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 60,
+    "name": "مطرانية ملوى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 61,
+    "name": "بيت الشمامسه القبطى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 62,
+    "name": "مكتبة النيل المسيحيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 63,
+    "name": "دير الأنبا بولا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 64,
+    "name": "منشورات المكتبه البولسيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 65,
+    "name": "ك. العذراء المقطم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 66,
+    "name": "ك. مارمرقس الأزبكيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 67,
+    "name": "كنائس حى المعادى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 68,
+    "name": "ك. العذراء الفشن",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 69,
+    "name": "ك. العذراء بالعصافره",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 70,
+    "name": "مجموعة جلورى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 71,
+    "name": "دار نوبار",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 72,
+    "name": "ك.مارجرجس و الامير تادرس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 73,
+    "name": "ك.العدراء والشهيد ابانوب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 74,
+    "name": "مطبعة المصريين",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 75,
+    "name": "مؤسسة بيتر للطباعة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 76,
+    "name": "أبناء ق. يوحنا ذهبى الفم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 77,
+    "name": "ك. العذراء بالعمرانيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 78,
+    "name": "بيت مدارس الأحد القبطى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 79,
+    "name": "مطرانية المنصوره",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 80,
+    "name": "ك. ابى سيفين-مصر القديمه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 81,
+    "name": "مطرانية الدقهليه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 82,
+    "name": "دير الأنبا توماس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 83,
+    "name": "ك. الملاك بالجيزه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 84,
+    "name": "مطرانية طما",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 85,
+    "name": "ك.مارجرجس-شيكولانى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 86,
+    "name": "مطرانية المنيا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 87,
+    "name": "ك.مارجرجس-محرم بك",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 88,
+    "name": "ك.مارجرجس-الحضره",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 89,
+    "name": "ك.الملاك-منصوره",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 90,
+    "name": "ك.العذراء بدماريس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 91,
+    "name": "ك.مارجرجس-طنطا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 92,
+    "name": "ك.الملاك-المحله الكبرى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 93,
+    "name": "دار ق. يوحنا الحبيب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 94,
+    "name": "ك. الأرثوذكسيه-لندن",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 95,
+    "name": "ك. العذراء-الفجاله",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 96,
+    "name": "مؤسسه القديس أنطونيوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 97,
+    "name": "ك. مارجرجس منشيه التحرير",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 98,
+    "name": "دير الشايب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 99,
+    "name": "المركز الأرثوذكسى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 100,
+    "name": "ك.مارجرجس م الجديدة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 101,
+    "name": "ك.السيدة العذراء",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 102,
+    "name": "التربيه الكنسيه-امبابه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 103,
+    "name": "ك.العذراء-روض الفرج",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 104,
+    "name": "مجمع كهنة إسكندريه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 105,
+    "name": "ك. العذراء أرض الجولف",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 106,
+    "name": "ك. العذراء-الوجوه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 107,
+    "name": "ك. مارجرجس-دسوق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 108,
+    "name": "ك. مارجرجس-الظاهر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 109,
+    "name": "ك.مارجرجس-حمامات القبه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 110,
+    "name": "دير مارجرجس-مصر قديمه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 111,
+    "name": "مطرانية بورسعيد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 112,
+    "name": "مطرانية المنوفيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 113,
+    "name": "مطرانية قنا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 114,
+    "name": "ك.العذراء-حارة الروم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 115,
+    "name": "ك.العذراء-جاردن سيتى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 116,
+    "name": "ك. العذراء-الزيتون",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 117,
+    "name": "ك. مارمرقس-مصر الجديده",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 118,
+    "name": "دير مارمينا-مريوط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 119,
+    "name": "كنائس وسط القاهرة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 120,
+    "name": "دير ق. دميانه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 121,
+    "name": "ج.نشر المعارف المسيحية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 122,
+    "name": "دار النشر المعمدانيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 123,
+    "name": "ك. الملاك-الظاهر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 124,
+    "name": "دار المشرق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 125,
+    "name": "دار مجلة مرقس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 126,
+    "name": "مطرانية القليوبيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 127,
+    "name": "ك. العذراء-الزقازيق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 128,
+    "name": "ك.ق.جرجس و ق.أنطونيوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 129,
+    "name": "ك. الأنبا أنطونيوس- شبرا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 130,
+    "name": "ك. مارجرجس-خمارويه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 131,
+    "name": "الدير الأحمر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 132,
+    "name": "بطريركية الأقباط بالقدس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 133,
+    "name": "كنائس زويله",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 134,
+    "name": "دار الشروق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 135,
+    "name": "مجلس كنائس الشرق الأوسط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 136,
+    "name": "ك. مارجرجس-شبرا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 137,
+    "name": "ك. العذراء-عزبة النخل",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 138,
+    "name": "ك. مارجرجس-فم الخليج",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 139,
+    "name": "مطرانية نجع حمادى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 140,
+    "name": "دير الأمير-حارة الروم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 141,
+    "name": "مكتبة أنجيلوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 142,
+    "name": "دير الشهداء-أخميم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 143,
+    "name": "ك.العذراء-جرجا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 144,
+    "name": "مطرانية منفلوط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 145,
+    "name": "مطرانية طهطا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 146,
+    "name": "ك. مارجرجس-المعادى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 147,
+    "name": "إيبارشية النمسا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 148,
+    "name": "ك. مارجرجس-كفر الزيات",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 149,
+    "name": "ك. الرسوليه-سوهاج",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 150,
+    "name": "ك. مارمرقس-شبرا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 151,
+    "name": "مطرانية الإسماعيليه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 152,
+    "name": "ك.مارجرجس-القنطرة غرب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 153,
+    "name": "الكاثوليك",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 154,
+    "name": "مطرانية مطاى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 155,
+    "name": "دير الأمير تادرس الشطبى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 156,
+    "name": "أبناء ق. العذراء-بورسعيد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 157,
+    "name": "مطرانية البحيرة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 158,
+    "name": "بيت ق. فيرينا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 159,
+    "name": "دار فيلوباتير",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 160,
+    "name": "ك. الملاك-كفر سمرى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 161,
+    "name": "ك. م. سوريال-العمرانية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 162,
+    "name": "مؤسسة ق. باسيليوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 163,
+    "name": "أسرة ق.أثناسيوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 164,
+    "name": "ك.الملاك - الزقازيق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 165,
+    "name": "ك. العذراء - الزمالك",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 166,
+    "name": "دار أنطون",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 167,
+    "name": "ك . مارمرقس لندن",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 168,
+    "name": "ك ابي سيفين و دميانة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 169,
+    "name": "كمارجرجس-سندبيس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 170,
+    "name": "ك مارمينا - فم الخليج",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 171,
+    "name": "مكتبة العذراء ابيار",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 172,
+    "name": "ك العذراء و مارجرجس برديس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 173,
+    "name": "مكتبة سانت مارى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 174,
+    "name": "دار القديس يوحنا الحبيب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 175,
+    "name": "بيت التكريس لخدمة الكرازة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 176,
+    "name": "مركز دراسات الاباء",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 177,
+    "name": "وجيه رزق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 178,
+    "name": "دار الكتاب المسيحى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 179,
+    "name": "مكتبة مارجرجس - شبرا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 180,
+    "name": "ابناء الانبا رويس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 181,
+    "name": "مكتبة كيرلو بشبرا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 182,
+    "name": "مطبوعات صوت الراعى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 183,
+    "name": "ك القديسين الاسكندرية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 184,
+    "name": "بي تى دبليو",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 185,
+    "name": "مطرانية الزقازيق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 186,
+    "name": "ك القديس سمعان الدباغ",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 187,
+    "name": "دار الفراشة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 188,
+    "name": "مكتبة جرير",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 189,
+    "name": "ك.مارمرقس كيلوباترا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 190,
+    "name": "معهد تدريب القادة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 191,
+    "name": "دار الأنبا أنطونيوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 192,
+    "name": "دار الكرمه الحقيقية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 193,
+    "name": "ك.الملاك - الصحفيين",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 194,
+    "name": "مؤسسة ق.مارمرقس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 195,
+    "name": "مدرسة الإسكندرية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 196,
+    "name": "إيبارشية ايرلندا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 197,
+    "name": "مركز باناريون",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 198,
+    "name": "مركز بيت الحياة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 199,
+    "name": "دار النشر الأرثوذكسيه",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 200,
+    "name": "المعهدالفرنسيسكاني الشرقي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 201,
+    "name": "مكتبة العذراء بالعمرانية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 202,
+    "name": "ج. ابناء الفادى القبطية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 203,
+    "name": "هيئة الخدمة الروحية وتدريب القادة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 204,
+    "name": "راهب من الأسقيط المقدس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 205,
+    "name": "مركز أبحاث المؤرخ",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 206,
+    "name": "ك.السيدة العذراء -محرم بك",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 207,
+    "name": "ك.ش استفانوس ومارمينا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 208,
+    "name": "مطبعة النيل المسيحية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 209,
+    "name": "التربية الكنسي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 210,
+    "name": "ك.ق.تادرس الشطبى بالمنيا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 211,
+    "name": "مطبعة الكرنك",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 212,
+    "name": "ك.العذراء وبولس- الزقازيق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 213,
+    "name": "ك. قصر الدوبارة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 214,
+    "name": "كاتدرائية مارجرجس - طنطا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 215,
+    "name": "ك. العذراء - المطرية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 216,
+    "name": "ايبارشية المنيا و أبو قرق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 217,
+    "name": "مطبعة الأنبا رويس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 218,
+    "name": "دار اوغسطينوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 219,
+    "name": "دار القديس بطرس للبرمجة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 220,
+    "name": "ك. مارجرجس - المطرية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 221,
+    "name": "ذهن جديد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 222,
+    "name": "مطرانية طنطا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 223,
+    "name": "مكتبة المشعل - بيروت",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 224,
+    "name": "منشورات النفير - بيروت",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 225,
+    "name": "مركز الشبيبة - بيروت",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 226,
+    "name": "ك.ش.دميانة - الهرم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 227,
+    "name": "ك. العذراء - المنصورة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 228,
+    "name": "القس عبد المسيح بسيط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 229,
+    "name": "الدار الكاثوليكية المصرية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 230,
+    "name": "مطبعة المرسلين اليسوعيين",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 231,
+    "name": "مكتبة الأخوة- جزيرة بدران",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 232,
+    "name": "منشورات النور",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 233,
+    "name": "د.القس البير إستيرو",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 234,
+    "name": "القس مينا ابراهيم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 235,
+    "name": "جمعية الخدمة المسيحية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 236,
+    "name": "وزارة التربية والتعليم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 237,
+    "name": "ك. مارمرقس - لندن",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 238,
+    "name": "لجنة خلاص النفوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 239,
+    "name": "إصدارات الكاروز",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 240,
+    "name": "دار منهل الحياة - بيروت",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 241,
+    "name": "ك. مارجرجس الشطبي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 242,
+    "name": "الجمعية الأسقفية - بولاق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 243,
+    "name": "دير الأنبا مكاريوس-الريان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 244,
+    "name": "ك.المرقسية - الأزبكية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 245,
+    "name": "ك.العذراء الأثرية -الوراق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 246,
+    "name": "جذور للنشر والترجمة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 247,
+    "name": "ك.العذراء وق.يوسف - سموحة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 248,
+    "name": "جامعة الروح القدس- لبنان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 249,
+    "name": "ك. السيدة العذراء - مغاغة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 250,
+    "name": "ك. مارجرجس - ملبورن",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 251,
+    "name": "جمعية انتشار الإنجيل",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 252,
+    "name": "ك. مارجرجس - الزقازيق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 253,
+    "name": "منشورات مطبعة الكاثوليك",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 254,
+    "name": "ك.ق. الأنبا بيشوى - فرنسا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 255,
+    "name": "مجلة الكرازة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 256,
+    "name": "مركز معلم الأجيال",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 257,
+    "name": "مؤسسة عائلتي السعيدة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 258,
+    "name": "ك. العذراء - مسطرد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 259,
+    "name": "بيت الكلمة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 260,
+    "name": "القمص بولس باسيلي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 261,
+    "name": "أبناء الكنيسة الأرثوذكسية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 262,
+    "name": "ك. الشهيد أبى سيفين- زفتى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 263,
+    "name": "أسقفية شئون أفريقيا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 264,
+    "name": "ك. العذراء - إبيار",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 265,
+    "name": "بيت محبة الله - الزيتون",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 266,
+    "name": "م. الخيرية لخدمة الجيل",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 267,
+    "name": "ك.العذراء - مسرة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 268,
+    "name": "كاتدرائية العذراء-المعصرة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 269,
+    "name": "ك.الأخوة - جزيرة بدران",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 270,
+    "name": "تعاونية النور الأرثوذكسية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 271,
+    "name": "ك. العذراء -كلومبس أوهايو",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 272,
+    "name": "سيليكون بريس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 273,
+    "name": "ك. مارمرقس الرسول -الجيزة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 274,
+    "name": "ك. العذراء - امبابة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 275,
+    "name": "ك.العذراء والملاك-م جديدة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 276,
+    "name": "ك.ش. دميانة - بابا دبلو",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 277,
+    "name": "ك. الملاك غبريال - عابدين",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 278,
+    "name": "المركز الثقافي القبطي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 279,
+    "name": "دار الكرنك للنشر والطبع",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 280,
+    "name": "دار ومكتبة الحرية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 281,
+    "name": "دير طور سيناء",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 282,
+    "name": "أبناء الأنبا موسى الأسود",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 283,
+    "name": "جمعية مارمينا العجايبي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 284,
+    "name": "ك.ش. بربارة - جزيرة الذهب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 285,
+    "name": "ك. العذراء - حارة زويلة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 286,
+    "name": "ج. نهضة الكنائس القبطية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 287,
+    "name": "مطرانية أسيوط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 288,
+    "name": "مطرانية أخميم وساقلتة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 289,
+    "name": "دار شيهيت للنشر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 290,
+    "name": "مطرانية سمالوط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 291,
+    "name": "الكتيبة الطيبية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 292,
+    "name": "مكتبة الأنجلو المصرية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 293,
+    "name": "مكتبة الأزبكية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 294,
+    "name": "ك. أبي سيفين- حدائق القبة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 295,
+    "name": "ك. القديس أنبا مقار-أتريس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 296,
+    "name": "ك. العذراء ومارمرقس-باريس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 297,
+    "name": "ك. مارجرجس - الجيزة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 298,
+    "name": "دير الأنبا صموئيل المعترف",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 299,
+    "name": "يافا للدراسات والأبحاث",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 300,
+    "name": "المناهري جروب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 301,
+    "name": "بي منريت للترجمة والنشر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 302,
+    "name": "دير مارمينا بإبيار غربية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 303,
+    "name": "ك. ق. بولس الرسول -العبور",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 304,
+    "name": "دار رسالتنا للنشر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 305,
+    "name": "مؤسسة وطني للطباعة والنشر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 306,
+    "name": "ك. مارجرجس- الجيوشي بشبرا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 307,
+    "name": "ك. الملاك ميخائيل -دمنهور",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 308,
+    "name": "دير ق. الأنبا باخوميوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 309,
+    "name": "دار العرب للبستاني",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 310,
+    "name": "دير العذراء والملاك ميخائيل - البهنسا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 311,
+    "name": "ك. الملاك ميخائيل - الدقي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 312,
+    "name": "ك. الأنبا تكلا هيمانوت- الإبراهيمية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 313,
+    "name": "ك. الملاك - المنيرة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 314,
+    "name": "ك. العذراء والملاك ميخائيل- الأباصيري",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 315,
+    "name": "مطرانية دشنا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 316,
+    "name": "دار الكتاب القبطي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 317,
+    "name": "مطرانية الجيزة وشرق أطفيح",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 318,
+    "name": "ك. مارجرحس - المنيا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 319,
+    "name": "ك. مارجرجس - منشية الصدر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 320,
+    "name": "مطرانية شبرا الخيمة وتوابعها",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 321,
+    "name": "الكلية الإكليريكية - طنطا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 322,
+    "name": "مكتبة الإسكندرية للنشر والتوزيع",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 323,
+    "name": "ك. العذراء - امستردام - هولندا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 324,
+    "name": "شركة الكرمة للنشر والتوزيع",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 325,
+    "name": "مركز دراسات المشورة الكتابية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 326,
+    "name": "دار نهضة مصر للنشر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 327,
+    "name": "أخبار اليوم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 328,
+    "name": "معهد التغذية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 329,
+    "name": "لجنة رعاية الفتاة - مطرانية بني سويف",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 330,
+    "name": "منشورات الفردوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 331,
+    "name": "دار دون للنشر والتوزيع",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 332,
+    "name": "المجمع العام لكنائس المثال المسيحي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 333,
+    "name": "مطبوعات إيجلز",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 334,
+    "name": "مطرانية أبنوب والفتح",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 335,
+    "name": "مكتبة الخانجي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 336,
+    "name": "ك.مارجرجس - جزيرة بدران",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 337,
+    "name": "معهد المشورة الأرثوذكسية - المعادي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 338,
+    "name": "أوفير",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 339,
+    "name": "كنيسة الرسولين بطرس وبولس- البطرسية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 340,
+    "name": "ك. مارمينا فلمنج - إسكندرية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 341,
+    "name": "جمعية أصدقاء الكتاب المقدس القبطية الأرثوذكسية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 342,
+    "name": "ك. العذراء - المليحة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 343,
+    "name": "ك.ق.الأنبا أثناسيوس - تفتيش السيوف",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 344,
+    "name": "ك. الملاك ميخائيل - طوسون",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 345,
+    "name": "مدارس الأحد - حلوان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 346,
+    "name": "ك. العذراء والملاك -الزهراء مصر الجديدة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 347,
+    "name": "ك. مارجرجس - الزاوية الحمراء",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 348,
+    "name": "ك. العذراء وق. أثناسيوس - مدينة نصر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 349,
+    "name": "الراهب القس كرنيليوس المقاري",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 350,
+    "name": "دار ثيؤطوكوس للنشر والطباعة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 351,
+    "name": "رابطة مرتلي الكنيسة القبطية الأرثوذكسية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 352,
+    "name": "مؤسسة القديس أغناطيوس للدراسات الآبائية -المنيا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 353,
+    "name": "ك. العذراء ويوحنا الحبيب - جناكليس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 354,
+    "name": "أسرة الخدمة جمعية السيدات القبطية -الزيتون",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 355,
+    "name": "ك. الأنبا أنطونيوس والأنبا بولا-المنصورة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 356,
+    "name": "ك. القديسة دميانة - أرض الحداد - امبابة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 357,
+    "name": "ك. الملاك شيراتون- مصر الجديدة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 358,
+    "name": "د. ماهر صموئيل",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 359,
+    "name": "دار نشر إنسباير",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 360,
+    "name": "الجيل الجديد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 361,
+    "name": "المنشورات المعمدانية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 362,
+    "name": "دار الفكر العربي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 363,
+    "name": "مكتبة مصر- الفجالة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 364,
+    "name": "المركز القومي للترجمة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 365,
+    "name": "لجنة الإيمان والتعليم - المجمع المقدس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 366,
+    "name": "مجلس كنائس حى مصر الجديدة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 367,
+    "name": "بطريركية الأفباط الأرثوذكس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 368,
+    "name": "كلية القديس أثناسيوس الإكليريكية - دمهور",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 369,
+    "name": "أبناء القمص يوسف أسعد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 370,
+    "name": "دير مارجرجس الحرفى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 371,
+    "name": "دار الأنبا كاراس للنشر والتوزيع",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 372,
+    "name": "ك. مارجرجس - برديس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 373,
+    "name": "ك. مارمرقس - لوس انجيلوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 374,
+    "name": "مطبوعات النعمة والحق- ك. مارجرجس مصر الجديدة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 375,
+    "name": "ك. العذراء والأنبا أبرام - إنجلترا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 376,
+    "name": "جمعية الأنبا غريغوريوس - أسقف البحث العلمي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 377,
+    "name": "ك. العذراء - القصيرين",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 378,
+    "name": "ك. القديس أباسخيرون - بالبيهو المنيا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 379,
+    "name": "ك. الشهيدين أباكير ويوحنا - أبي قير",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 380,
+    "name": "مطرانية المحلة الكبرى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 381,
+    "name": "ك. العذراء والشهيد أبانوب - سمنود",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 382,
+    "name": "ك. الأنبا إبشاي والأنبا بطرس - صدفا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 383,
+    "name": "ك. الملاك القبلي - مصر القديمة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 384,
+    "name": "أبناء الشهيدة بربتوا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 385,
+    "name": "مطرانية جرجا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 386,
+    "name": "ك. ق. أبى سيفين - الدقي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 387,
+    "name": "دير مارجرجس - الرزيقات أرمنت",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 388,
+    "name": "دير مارجرجس - ميت دمسيس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 389,
+    "name": "إيبارشية صنبو وديروط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 390,
+    "name": "دير الشهيد أبي سيفين للراهبات - مصر القديمة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 391,
+    "name": "مكتبة ك. الشهيد أقلوديوس بمير قبلي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 392,
+    "name": "ك. القديس موريس والقديسة فيرينا - سمالوط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 393,
+    "name": "أيمن صبحي سعد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 394,
+    "name": "القمص يوحنا السبكي الأنطوني",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 395,
+    "name": "ك. الشهيد العظيم مارمينا - بورسعيد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 396,
+    "name": "مطرانية ببا والفشن وسمسطا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 397,
+    "name": "ك. القديس أباهور البهجورى - المنيا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 398,
+    "name": "ك. مارجرجس - مصر القديمة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 399,
+    "name": "أبناء الأنبا اسطفانوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 400,
+    "name": "أبناء القديس الأنبا أغابيوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 401,
+    "name": "نادى الصداقة والفكر المسيحي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 402,
+    "name": "سلسلة الإنجيل المعاش",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 403,
+    "name": "دير الأنبا برسوم العريان - بالمعصرة حلوان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 404,
+    "name": "مطرانية حلوان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 405,
+    "name": "مطرانية نقادة وقوص",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 406,
+    "name": "أبناء أبونا بولا الصموئيلي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 407,
+    "name": "ك. مارجرجس - الهرم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 408,
+    "name": "رسالة القديسة تريزة ليسوع الطفل",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 409,
+    "name": "ك. العذراء - بنى أحمد الشرقية - المنيا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 410,
+    "name": "ك. العذراء - عين شمس الغربية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 411,
+    "name": "ك. العذراء للاقباط الكاثوليك",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 412,
+    "name": "ك. العذراء والملاك ميخائيل - أحمد عصمت",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 413,
+    "name": "ك. العذراء - العزباوية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 414,
+    "name": "أبناء أبونا عبد المسيح المقاري بسمالوط",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 415,
+    "name": "ك. السيدة العذراء - بنها",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 416,
+    "name": "ك. العذراء بابليون - مصر القديمة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 417,
+    "name": "ك. مارمرقس - أبو تيج",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 418,
+    "name": "مطرانية أبو تيج وصدفا والغنايم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 419,
+    "name": "إيبارشية شبة جزيرة سيناء",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 420,
+    "name": "مطرانية بنها وقويسنا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 421,
+    "name": "دير الأنبا باخوميوس - بحاجر ادفو",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 422,
+    "name": "كنائس حي السكة الحديد",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 423,
+    "name": "أبناء الأنبا مينا بجرجا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 424,
+    "name": "مكتبة تي أجيا دميانة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 425,
+    "name": "دير القديس الأنبا هرمينا السائح - جبل قاو",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 426,
+    "name": "أسرة أبونا يسطس الأنبا بولا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 427,
+    "name": "ك. مارجرجس - الحرفيين",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 428,
+    "name": "ك. العذراء ببهجورة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 429,
+    "name": "د. جورج عوض إبراهيم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 430,
+    "name": "دير القديس الأنبا بضابا - نجع حمادى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 431,
+    "name": "ك. العذراء إيست برونزويك - نيوجيرسى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 432,
+    "name": "دير الشهيدة دميانة للراهبات - البرارى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 433,
+    "name": "ك. مارمينا - الفيوم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 434,
+    "name": "مكتبة دير الزجاج",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 435,
+    "name": "ك. مارجرجس - شبين الكوم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 436,
+    "name": "مطبوعات الآباء اليسوعيين فى مصر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 437,
+    "name": "جمعية جنود المسيح القبطيةالأرثوذكسية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 438,
+    "name": "كنوز النعمة للثقافة القبطية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 439,
+    "name": "مطبوعات الرجاء",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 440,
+    "name": "ك. القديسة بربارة - الشرابية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 441,
+    "name": "مجمع الكنائس فى الشرق الأدنى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 442,
+    "name": "دار مشتات - ألمانيا الغربية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 443,
+    "name": "المؤسسة الدولية للخدمات الإعلامية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 444,
+    "name": "ك. العذراء والملاك - شبرا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 445,
+    "name": "عادل البطوسي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 446,
+    "name": "ك. ق. مارمرقس - المعادي",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 447,
+    "name": "مؤسسة البطل والعجايبي القبطية الأرثوذكسية",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 448,
+    "name": "ك. الملاك ميخائيل - عزبة النخل",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 449,
+    "name": "ك. مارجرجس - غيط العنب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 450,
+    "name": "ك. العذراء ومارجرجس - الشروق",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 451,
+    "name": "مكتبة السيدة العذراء - بالأقصر",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 452,
+    "name": "مكتبة المتنيح الأنبا غريغوريوس - رمسيس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 453,
+    "name": "رابطة قراء الكتاب المقدس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 454,
+    "name": "ك. العذراء والقديس بولس - الحضرة الجديدة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 455,
+    "name": "دير الملاك غبريال العامر - برية النقلون - الفيوم",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 456,
+    "name": "مكتبة مارجرجس - الجيزة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 457,
+    "name": "ك. ق. جوارجيوس والأنبا أنطونيوس - النزهة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 458,
+    "name": "مقر دير الأنبا بولا - ترعة الجبل",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 459,
+    "name": "ك. العذراء - الوادى الجديد الخارجة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 460,
+    "name": "منشورات مطرانية الروم الأرثوذكس - بيروت",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 461,
+    "name": "جريدة الأهرام",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 462,
+    "name": "لجنة الطفولة",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 463,
+    "name": "لجنة كورس الآبائيات - أسقفية الشباب",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 464,
+    "name": "إيبارشية لوس أنجلوس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 465,
+    "name": "المجمع المقدس",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 466,
+    "name": "ك. العذراء مريم - ادفو",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 467,
+    "name": "ك. الشهيد مارجرجس - حدائق حلوان",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 468,
+    "name": "ك. ماربقطر شو بموشا",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 469,
+    "name": "ك. العذراء والأنبا صرابامون - البتانون",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 470,
+    "name": "كاتدرائية الشهيد مارجرجس - المحلة الكبرى",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 471,
+    "name": "مطرانية كرسى القوصية ومير",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 472,
+    "name": "المركز الإعلامى للكنيسة القبطية الأرثوذكسية",
+    "created_at": null,
+    "updated_at": null
+  }
+]

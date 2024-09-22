@@ -37,7 +37,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             AuthorSeeder::class,
-            CategorySeeder::class
+            CategorySeeder::class,
+            PublisherSeeder::class
         ]);
     }
 }
