@@ -21,15 +21,15 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
         ]);
 
-       $user = User::firstOrCreate([
+        $user = User::firstOrCreate([
             'name' => 'Admin',
             'email' => 'admin@library.com',
             'password' => bcrypt('123456789'),
         ]);
 
-       $user->assignRole('Admin');
+        $user->assignRole('Admin');
 
-       $resources = GetResourcesForPermissions::fetchResources();
+        $resources = GetResourcesForPermissions::fetchResources();
         $resources->each(function ($resource) {
             GetResourcesForPermissions::createCrudPermissions($resource);
             GetResourcesForPermissions::syncPermissionsToSuperadmin();
@@ -38,7 +38,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AuthorSeeder::class,
             CategorySeeder::class,
-            PublisherSeeder::class
+            PublisherSeeder::class,
+            SubjectSeeder::class,
         ]);
     }
 }

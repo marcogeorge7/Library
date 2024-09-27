@@ -6,10 +6,19 @@ use App\Filament\Admin\Resources\AuthorResource;
 use App\Filament\Admin\Resources\CategoryResource;
 use App\Filament\Admin\Resources\PublisherResource;
 use App\Filament\Admin\Resources\RevisorResource;
+use App\Filament\Admin\Resources\SubjectResource;
+use App\Models\Author;
+use App\Models\Category;
+use App\Models\Publisher;
+use App\Models\Revisor;
+use App\Models\Subject;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationBuilder;
+use Filament\Navigation\NavigationGroup;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -29,7 +38,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->id('admins')
-            ->path('admins')
+            ->path('admin')
             ->login()
             ->colors([
                 'primary' => Color::Emerald,
@@ -39,13 +48,35 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->resources([
-                CategoryResource::class,
-                AuthorResource::class,
-                PublisherResource::class,
-                RevisorResource::class
+            ->navigation(function (NavigationBuilder $builder) {
+                return $builder->groups([
+                    NavigationGroup::make('Operations')
+                        ->icon('heroicon-o-cog-8-tooth')
+                        ->items([
+                            NavigationItem::make(__('Categories'))
+                                ->url(CategoryResource::getUrl())
+                                ->badge(Category::count(), color: 'warning'),
 
-            ])
+                            NavigationItem::make(__('Authors'))
+                                ->url(AuthorResource::getUrl())
+                                ->badge(Author::count(), color: 'warning'),
+
+                            NavigationItem::make(__('Publishers'))
+                                ->url(PublisherResource::getUrl())
+                                ->badge(Publisher::count(), color: 'warning'),
+
+                            NavigationItem::make(__('Revisors'))
+                                ->url(RevisorResource::getUrl())
+                                ->badge(Revisor::count(), color: 'warning'),
+
+                            NavigationItem::make(__('Subjects'))
+                                ->url(SubjectResource::getUrl())
+                                ->badge(Subject::count(), color: 'warning'),
+
+                        ]),
+                ]);
+
+            })
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
