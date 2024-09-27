@@ -5,10 +5,13 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\PublisherResource\Pages\CreatePublisher;
 use App\Filament\Admin\Resources\PublisherResource\Pages\EditPublisher;
 use App\Filament\Admin\Resources\PublisherResource\Pages\ListPublishers;
+use App\Filament\Admin\Resources\PublisherResource\Pages\ViewPublisher;
 use App\Models\Publisher;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -73,12 +76,25 @@ class PublisherResource extends Resource
             ]);
     }
 
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                \Filament\Infolists\Components\Section::make(__('Translator Details'))
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label(__('Publisher Name')),
+                    ]),
+            ]);
+    }
+
     public static function getPages(): array
     {
         return [
             'index' => ListPublishers::route('/'),
             'create' => CreatePublisher::route('/create'),
             'edit' => EditPublisher::route('/{record}/edit'),
+            'view' => ViewPublisher::route('/{record}'),
         ];
     }
 }

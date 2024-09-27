@@ -8,6 +8,8 @@ use App\Models\Subject;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -17,6 +19,7 @@ use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\ForceDeleteBulkAction;
 use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Actions\RestoreBulkAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
@@ -26,8 +29,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class SubjectResource extends Resource
 {
     protected static ?string $model = Subject::class;
-
-    protected static ?string $slug = 'subjects';
 
     protected static ?string $modelLabel = 'الموضوع';
 
@@ -62,9 +63,9 @@ class SubjectResource extends Resource
             ])
             ->actions([
                 EditAction::make(),
+                ViewAction::make(),
                 DeleteAction::make(),
                 RestoreAction::make(),
-                ForceDeleteAction::make(),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
@@ -75,25 +76,25 @@ class SubjectResource extends Resource
             ]);
     }
 
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                \Filament\Infolists\Components\Section::make(__('Translator Details'))
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label(__('Subject Name')),
+                    ]),
+            ]);
+    }
+
     public static function getPages(): array
     {
         return [
             'index' => Resources\SubjectResource\Pages\ListSubjects::route('/'),
             'create' => Resources\SubjectResource\Pages\CreateSubject::route('/create'),
             'edit' => Resources\SubjectResource\Pages\EditSubject::route('/{record}/edit'),
+            'view' => Resources\SubjectResource\Pages\ViewSubject::route('/{record}'),
         ];
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
-    }
-
-    public static function getGloballySearchableAttributes(): array
-    {
-        return ['name'];
     }
 }

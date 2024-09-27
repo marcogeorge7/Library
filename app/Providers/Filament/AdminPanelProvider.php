@@ -7,11 +7,13 @@ use App\Filament\Admin\Resources\CategoryResource;
 use App\Filament\Admin\Resources\PublisherResource;
 use App\Filament\Admin\Resources\RevisorResource;
 use App\Filament\Admin\Resources\SubjectResource;
+use App\Filament\Admin\Resources\TranslatorResource;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\Publisher;
 use App\Models\Revisor;
 use App\Models\Subject;
+use App\Models\Translator;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -64,6 +66,10 @@ class AdminPanelProvider extends PanelProvider
                             NavigationItem::make(__('Publishers'))
                                 ->url(PublisherResource::getUrl())
                                 ->badge(Publisher::count(), color: 'warning'),
+
+                            NavigationItem::make(__('Translators'))
+                                ->url(TranslatorResource::getUrl())
+                                ->badge(Translator::count(), color: 'warning'),
 
                             NavigationItem::make(__('Revisors'))
                                 ->url(RevisorResource::getUrl())

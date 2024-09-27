@@ -26,5 +26,9 @@
     "Subject Name" : "اسم الموضوع",
     "Subject Details" : "تفاصيل الموضوع",
     "Subject" : "الموضوع",
-    "Subjects" : "المواضيع"
+    "Subjects" : "المواضيع",
+    "Translator Name" : "اسم المترجم",
+    "Translator Details" : "تفاصيل المترجم",
+    "Translator" : "المترجم",
+    "Translators" : "المترجمين"
 }

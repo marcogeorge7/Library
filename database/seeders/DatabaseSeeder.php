@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             PublisherSeeder::class,
             SubjectSeeder::class,
+            TranslatorSeeder::class,
         ]);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\RevisorResource\Pages;
-use App\Models\Revisor;
+use App\Filament\Admin\Resources\TranslatorResource\Pages;
+use App\Models\Translator;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Section;
@@ -13,27 +13,27 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class RevisorResource extends Resource
+class TranslatorResource extends Resource
 {
-    protected static ?string $model = Revisor::class;
+    protected static ?string $model = Translator::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $modelLabel = 'المراجع';
+    protected static ?string $modelLabel = 'المترجم';
 
-    protected static ?string $pluralModelLabel = 'المراجعين';
+    protected static ?string $pluralModelLabel = 'المترجمين';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make(__('Revisor Details'))
+                Forms\Components\Section::make(__('Translator Details'))
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('Revisor Name'))
                             ->required()
                             ->maxLength(255),
                     ]),
+
             ]);
     }
 
@@ -42,8 +42,11 @@ class RevisorResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('Revisor Name'))
                     ->searchable(),
+                Tables\Columns\TextColumn::make('deleted_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -57,6 +60,7 @@ class RevisorResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -80,7 +84,7 @@ class RevisorResource extends Resource
                 Section::make(__('Translator Details'))
                     ->schema([
                         TextEntry::make('name')
-                            ->label(__('Revisor Name')),
+                            ->label(__('Translator Name')),
                     ]),
             ]);
     }
@@ -88,10 +92,10 @@ class RevisorResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRevisors::route('/'),
-            'create' => Pages\CreateRevisor::route('/create'),
-            'edit' => Pages\EditRevisor::route('/{record}/edit'),
-            'view' => Pages\ViewRevisor::route('/{record}'),
+            'index' => Pages\ListTranslators::route('/'),
+            'create' => Pages\CreateTranslator::route('/create'),
+            'edit' => Pages\EditTranslator::route('/{record}/edit'),
+            'view' => Pages\ViewTranslator::route('/{record}'),
         ];
     }
 }
