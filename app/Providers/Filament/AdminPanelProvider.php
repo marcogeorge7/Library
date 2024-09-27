@@ -52,7 +52,15 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigation(function (NavigationBuilder $builder) {
                 return $builder->groups([
-                    NavigationGroup::make('Operations')
+                    NavigationGroup::make(__('Dashboard'))
+                        ->items([
+                            NavigationItem::make(__('Dashboard'))
+                                ->url(Pages\Dashboard::getUrl())
+                                ->icon(null),
+
+                        ])
+                        ->icon('heroicon-o-chart-pie'),
+                    NavigationGroup::make(__('Operations'))
                         ->icon('heroicon-o-cog-8-tooth')
                         ->items([
                             NavigationItem::make(__('Categories'))
