@@ -15,5 +15,10 @@
     "Category Name" : "اسم الفئة",
     "Category Details" : "تفاصيل الفئة",
     "Created At" : "تم الانشاء",
-    "Publisher Name" : "اسم الناشر"
+    "Publisher Name" : "اسم الناشر",
+    "Revisor Name" : "اسم المراجع",
+    "Revisor Details" : "تفاصيل المراجع",
+    "Publisher Details" : "تفاصيل الناشر",
+    "Revisor" : "المراجع",
+    "Revisors" : "المراجعين"
 }

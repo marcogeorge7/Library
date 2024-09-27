@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Filament\Admin\Resources\AuthorResource;
 use App\Filament\Admin\Resources\CategoryResource;
 use App\Filament\Admin\Resources\PublisherResource;
+use App\Filament\Admin\Resources\RevisorResource;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -42,6 +43,7 @@ class AdminPanelProvider extends PanelProvider
                 CategoryResource::class,
                 AuthorResource::class,
                 PublisherResource::class,
+                RevisorResource::class
 
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
