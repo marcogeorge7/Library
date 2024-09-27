@@ -15,6 +15,7 @@ use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -27,9 +28,9 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-square-3-stack-3d';
 
-    protected static ?string $modelLabel = "الفئة";
+    protected static ?string $modelLabel = 'الفئة';
 
-    protected static ?string $pluralModelLabel = "الفئات";
+    protected static ?string $pluralModelLabel = 'الفئات';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -37,7 +38,7 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make("name")
+                TextInput::make('name')
                     ->label(__('Category Name'))
                     ->required(),
             ]);
@@ -56,7 +57,8 @@ class CategoryResource extends Resource
                 TrashedFilter::make(),
             ])
             ->actions([
-                ViewAction::make()
+                ViewAction::make(),
+                EditAction::make(),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
@@ -69,11 +71,11 @@ class CategoryResource extends Resource
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist->schema([
-            Section::make(__("Category Details"))
+            Section::make(__('Category Details'))
                 ->schema([
                     TextEntry::make('name')
-                        ->label(__("Category Name"))
-                        ->icon("heroicon-o-tag"),
+                        ->label(__('Category Name'))
+                        ->icon('heroicon-o-tag'),
                 ]),
         ]);
     }

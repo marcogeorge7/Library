@@ -2,9 +2,11 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Resources\PublisherResource\Pages;
+use App\Filament\Admin\Resources\PublisherResource\Pages\CreatePublisher;
+use App\Filament\Admin\Resources\PublisherResource\Pages\EditPublisher;
+use App\Filament\Admin\Resources\PublisherResource\Pages\ListPublishers;
 use App\Models\Publisher;
-use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,8 +21,6 @@ use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PublisherResource extends Resource
 {
@@ -28,20 +28,20 @@ class PublisherResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $modelLabel = 'الناشر';
+
+    protected static ?string $pluralModelLabel = 'الناشرين';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Placeholder::make('created_at')
-                    ->label('Created Date')
-                    ->content(fn(?Publisher $record): string => $record?->created_at?->diffForHumans() ?? '-'),
-
-                Placeholder::make('updated_at')
-                    ->label('Last Modified Date')
-                    ->content(fn(?Publisher $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
-
-                TextInput::make('name')
-                    ->required(),
+                Section::make('Publisher Details')
+                    ->schema([
+                        TextInput::make('name')
+                            ->label(__('Publisher Name'))
+                            ->required(),
+                    ]),
 
             ]);
     }
@@ -51,6 +51,7 @@ class PublisherResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('Publisher Name'))
                     ->searchable()
                     ->sortable(),
             ])
@@ -75,9 +76,9 @@ class PublisherResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Admin\Resources\PublisherResource\Pages\ListPublishers::route('/'),
-            'create' => \App\Filament\Admin\Resources\PublisherResource\Pages\CreatePublisher::route('/create'),
-            'edit' => \App\Filament\Admin\Resources\PublisherResource\Pages\EditPublisher::route('/{record}/edit'),
+            'index' => ListPublishers::route('/'),
+            'create' => CreatePublisher::route('/create'),
+            'edit' => EditPublisher::route('/{record}/edit'),
         ];
     }
 }

@@ -11,34 +11,33 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AuthorResource extends Resource
 {
     protected static ?string $model = Author::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-circle';
+
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function getModelLabel(): string
     {
-        return __("Author");
+        return __('Author');
     }
 
     public static function getPluralLabel(): ?string
     {
-        return __("Authors");
+        return __('Authors');
     }
-
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->label(__("Author Name"))
+                    ->label(__('Author Name'))
                     ->required()
                     ->maxLength(100),
             ]);
@@ -50,7 +49,7 @@ class AuthorResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
-                    ->label(__("Author Name"))
+                    ->label(__('Author Name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -66,6 +65,7 @@ class AuthorResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -77,11 +77,11 @@ class AuthorResource extends Resource
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist->schema([
-            Section::make(__("Author Details"))
+            Section::make(__('Author Details'))
                 ->schema([
                     TextEntry::make('name')
-                        ->label(__("Author Name"))
-                    ->icon("heroicon-o-tag"),
+                        ->label(__('Author Name'))
+                        ->icon('heroicon-o-tag'),
                 ]),
         ]);
     }

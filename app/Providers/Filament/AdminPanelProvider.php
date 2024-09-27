@@ -39,9 +39,9 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->resources([
-                AuthorResource::class,
                 CategoryResource::class,
-                PublisherResource::class
+                AuthorResource::class,
+                PublisherResource::class,
 
             ])
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
@@ -62,8 +62,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ])->authGuard("web");
+            ])->authGuard('web');
     }
+
     public function register(): void
     {
         parent::register();
