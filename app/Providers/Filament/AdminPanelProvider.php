@@ -6,12 +6,14 @@ use App\Filament\Admin\Resources\AuthorResource;
 use App\Filament\Admin\Resources\CategoryResource;
 use App\Filament\Admin\Resources\PublisherResource;
 use App\Filament\Admin\Resources\RevisorResource;
+use App\Filament\Admin\Resources\SeriesResource;
 use App\Filament\Admin\Resources\SubjectResource;
 use App\Filament\Admin\Resources\TranslatorResource;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\Publisher;
 use App\Models\Revisor;
+use App\Models\Series;
 use App\Models\Subject;
 use App\Models\Translator;
 use Filament\Actions\Action;
@@ -86,6 +88,10 @@ class AdminPanelProvider extends PanelProvider
                             NavigationItem::make(__('Subjects'))
                                 ->url(SubjectResource::getUrl())
                                 ->badge(Subject::count(), color: 'warning'),
+
+                            NavigationItem::make(__('Series'))
+                                ->url(SeriesResource::getUrl())
+                                ->badge(Series::count(), color: 'warning'),
 
                         ]),
                 ]);

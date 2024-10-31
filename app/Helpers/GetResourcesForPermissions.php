@@ -13,14 +13,14 @@ class GetResourcesForPermissions
     public static function generateResourcePermissions(string $resourceName): Collection
     {
         return collect([
-            'viewAny' . $resourceName,
-            'view' . $resourceName,
-            'update' . $resourceName,
-            'create' . $resourceName,
-            'delete' . $resourceName,
-            'forceDelete' . $resourceName,
-            'restore' . $resourceName,
-            'destroy' . $resourceName,
+            'viewAny'.$resourceName,
+            'view'.$resourceName,
+            'update'.$resourceName,
+            'create'.$resourceName,
+            'delete'.$resourceName,
+            'forceDelete'.$resourceName,
+            'restore'.$resourceName,
+            'destroy'.$resourceName,
         ]);
     }
 
@@ -30,7 +30,7 @@ class GetResourcesForPermissions
         $permissions->each(
             function ($permission) use ($resource) {
                 Permission::firstOrCreate([
-                    'guard_name' => "web",
+                    'guard_name' => 'web',
                     'group' => $resource,
                     'name' => $permission,
                 ]);
@@ -40,7 +40,7 @@ class GetResourcesForPermissions
 
     public static function syncPermissionsToSuperadmin()
     {
-        $role = Role::where('name', "Admin")->first();
+        $role = Role::where('name', 'Admin')->first();
 
         $role->givePermissionTo(Permission::all());
 
@@ -48,7 +48,7 @@ class GetResourcesForPermissions
             return;
         }
 
-        $users =User::role("Admin")->get();
+        $users = User::role('Admin')->get();
 
         $users->each(fn ($employee) => $employee->assignRole($role));
     }
