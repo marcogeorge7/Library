@@ -2,23 +2,22 @@
 
 namespace App\Services;
 
+use App\Models\Book;
+use App\Models\Copy;
+use App\Models\Edition;
+
 class BarCode
 {
-    /**
-     * @param  Copy  $copy
-     * @return string
-     */
-    public function generate()
+    public static function generate(Edition $edition): string
     {
         $alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-        // Get book details
-        $edition = $copy->edition;
+        // Get copy details
         $book = $edition->book;
         $categoryId = $book->category->id;
 
         // Generate category prefix based on category ID
-        $catPrefix = (int) ($categoryId / 26) . $alphabet[($categoryId % 26) - 1];
+        $catPrefix = (int) ($categoryId / 26).$alphabet[($categoryId % 26) - 1];
 
         // Get the first four characters of the book's name
         $bookNamePrefix = substr($book->name, 0, 4);
@@ -43,11 +42,9 @@ class BarCode
         }
 
         // Get book number within category
-        $lastBookInCategory = DB::table('books')
-            ->where('category_id', $categoryId)
-            ->where('name', 'like', $bookNamePrefix . '%')
-            ->orderBy('id', 'DESC')
-            ->first();
+        $lastBookInCategory = Book::where('category_id', $categoryId)
+            ->where('name', 'like', $bookNamePrefix.'%')
+            ->latest()->first();
 
         if ($book->series_id) {
             // If the book is in a series, count previous books in the series
@@ -64,16 +61,14 @@ class BarCode
         }
 
         // Create barcode
-        $newBarcode = $catPrefix . $seriesLetter . $bookNumber . str_pad($edition->partCode, 2, '0', STR_PAD_LEFT);
+        $newBarcode = $catPrefix.$seriesLetter.$bookNumber.str_pad($edition->partCode, 2, '0', STR_PAD_LEFT);
 
         // Check for existing copies and increment copy ID
-        $lastCopy = Copy::where('barcode', 'like', $newBarcode . '%')->orderBy('id', 'DESC')->first();
+        $lastCopy = Copy::where('barcode', 'like', $newBarcode.'%')->orderBy('id', 'DESC')->first();
         $copyNumber = $lastCopy ? str_pad((int) substr($lastCopy->barcode, -2) + 1, 2, '0', STR_PAD_LEFT) : '01';
 
         // Final barcode
-        $result = $newBarcode . $copyNumber;
-
-        return $result;
+        return $newBarcode.$copyNumber;
 
     }
 }

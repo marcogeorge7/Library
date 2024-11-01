@@ -7,15 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Edition extends BaseModel
+class Copy extends Model
 {
-    public function book(): BelongsTo
-    {
-        return $this->belongsTo(Book::class);
-    }
+    use HasFactory, SoftDeletes;
 
-    public function publisher(): BelongsTo
+    public function edition(): BelongsTo
     {
-        return $this->belongsTo(Publisher::class);
+        return $this->belongsTo(Edition::class);
     }
 }

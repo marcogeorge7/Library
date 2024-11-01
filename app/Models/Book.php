@@ -20,4 +20,19 @@ class Book extends BaseModel
     {
         return $this->belongsTo(Series::class);
     }
+
+    public function author()
+    {
+        return $this->belongsToMany(Author::class, 'author_books_pivot_table', 'book_id', 'author_id');
+    }
+
+    public function editions()
+    {
+        return $this->hasMany(Edition::class);
+    }
+
+    public function copies()
+    {
+        return $this->hasManyThrough(Copy::class, Edition::class);
+    }
 }
