@@ -18,7 +18,7 @@ class AuthorResource extends Resource
 {
     protected static ?string $model = Author::class;
 
-//    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
+    //    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
 
     protected static ?string $recordTitleAttribute = 'name';
 

@@ -10,7 +10,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class BaseModel extends Model
 {
-    use SoftDeletes, HasFactory, HasSlug;
+    use HasFactory, HasSlug, SoftDeletes;
 
     protected $guarded = ['id'];
 

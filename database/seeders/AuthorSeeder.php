@@ -11,7 +11,7 @@ class AuthorSeeder extends Seeder
     {
         $authors = json_decode(
             file_get_contents(
-                database_path("data/authors.json")), true);
+                database_path('data/authors.json')), true);
 
         foreach ($authors as $author) {
             Author::create($author);

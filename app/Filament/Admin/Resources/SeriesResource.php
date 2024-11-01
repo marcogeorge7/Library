@@ -68,8 +68,8 @@ class SeriesResource extends Resource
                 ->schema([
                     \Filament\Infolists\Components\TextEntry::make('name')
                         ->label(__('Series Name'))
-                    ->icon('heroicon-o-rectangle-stack'),
-            ])
+                        ->icon('heroicon-o-rectangle-stack'),
+                ]),
         ]);
     }
 

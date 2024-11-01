@@ -13,14 +13,14 @@ class GetResourcesForPermissions
     public static function generateResourcePermissions(string $resourceName): Collection
     {
         return collect([
-            'viewAny'.$resourceName,
-            'view'.$resourceName,
-            'update'.$resourceName,
-            'create'.$resourceName,
-            'delete'.$resourceName,
-            'forceDelete'.$resourceName,
-            'restore'.$resourceName,
-            'destroy'.$resourceName,
+            'viewAny' . $resourceName,
+            'view' . $resourceName,
+            'update' . $resourceName,
+            'create' . $resourceName,
+            'delete' . $resourceName,
+            'forceDelete' . $resourceName,
+            'restore' . $resourceName,
+            'destroy' . $resourceName,
         ]);
     }
 

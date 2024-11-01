@@ -34,5 +34,7 @@
     "Operations" : "الادارة",
     "Dashboard" : "لوحة التحكم",
     "Series" : "التسلسلات",
-    "Series Name" : "اسم التسلسل"
+    "Series Name" : "اسم التسلسل",
+    "Series Details" : "تفاصيل التسلسل",
+    "series" : "التسلسل"
 }

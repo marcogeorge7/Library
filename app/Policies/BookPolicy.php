@@ -4,7 +4,8 @@ namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class SubjectPolicy
+class BookPolicy
 {
     use HandlesAuthorization;
+
 }

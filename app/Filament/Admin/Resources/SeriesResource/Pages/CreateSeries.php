@@ -3,7 +3,6 @@
 namespace App\Filament\Admin\Resources\SeriesResource\Pages;
 
 use App\Filament\Admin\Resources\SeriesResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateSeries extends CreateRecord
