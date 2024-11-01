@@ -36,5 +36,16 @@
     "Series" : "السلسلات",
     "Series Name" : "اسم السلسلة",
     "Series Details" : "تفاصيل السلسلة",
-    "series" : "السلسلة"
+    "series" : "السلسلة",
+    "Books" : "الكتب",
+    "Book Name" : "اسم الكتاب",
+    "Book Details" : "تفاصيل الكتاب",
+    "Book" : "الكتاب",
+    "books" : "الكتب",
+    "Edition" : "الطبعة",
+    "Edition Name" : "اسم الطبعة",
+    "Edition Details" : "تفاصيل الطبعة",
+    "edition" : "طبعة",
+    "editions" : "طبعات",
+    "Editions" : "الطبعات"
 }

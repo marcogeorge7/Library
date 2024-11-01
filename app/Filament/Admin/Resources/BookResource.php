@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\BookResource\Pages\CreateBook;
 use App\Filament\Admin\Resources\BookResource\Pages\EditBook;
 use App\Filament\Admin\Resources\BookResource\Pages\ListBooks;
+use App\Filament\Admin\Resources\BookResource\Pages\ViewBook;
 use App\Models\Book;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
@@ -24,6 +25,10 @@ class BookResource extends Resource
     protected static ?string $slug = 'books';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $modelLabel = 'كتاب';
+
+    protected static ?string $pluralModelLabel = 'كتب';
 
     public static function form(Form $form): Form
     {
@@ -91,6 +96,7 @@ class BookResource extends Resource
             'index' => ListBooks::route('/'),
             'create' => CreateBook::route('/create'),
             'edit' => EditBook::route('/{record}/edit'),
+            'view' => ViewBook::route('/{record}'),
         ];
     }
 }

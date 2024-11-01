@@ -3,14 +3,18 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Admin\Resources\AuthorResource;
+use App\Filament\Admin\Resources\BookResource;
 use App\Filament\Admin\Resources\CategoryResource;
+use App\Filament\Admin\Resources\EditionResource;
 use App\Filament\Admin\Resources\PublisherResource;
 use App\Filament\Admin\Resources\RevisorResource;
 use App\Filament\Admin\Resources\SeriesResource;
 use App\Filament\Admin\Resources\SubjectResource;
 use App\Filament\Admin\Resources\TranslatorResource;
 use App\Models\Author;
+use App\Models\Book;
 use App\Models\Category;
+use App\Models\Edition;
 use App\Models\Publisher;
 use App\Models\Revisor;
 use App\Models\Series;
@@ -93,6 +97,17 @@ class AdminPanelProvider extends PanelProvider
                                 ->url(SeriesResource::getUrl())
                                 ->badge(Series::count(), color: 'warning'),
 
+                        ]),
+                    NavigationGroup::make(__('Books'))
+                        ->icon('heroicon-o-book-open')
+                        ->items([
+                            NavigationItem::make(__('Books'))
+                                ->url(BookResource::getUrl())
+                                ->badge(Book::count(), color: 'warning'),
+
+                            NavigationItem::make(__('Editions'))
+                                ->url(EditionResource::getUrl())
+                                ->badge(Edition::count(), color: 'warning'),
                         ]),
                 ]);
 
