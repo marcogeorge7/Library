@@ -15,7 +15,6 @@ class Copy extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-        'internal_borrowing' => 'boolean',
         'is_printed' => 'boolean',
         'is_borrowed' => 'boolean',
     ];
@@ -25,7 +24,7 @@ class Copy extends Model
         return $this->belongsTo(Edition::class);
     }
 
-    public function scopeIsBorrowed(Builder $query)
+    public function scopeBorrowed(Builder $query)
     {
         return $query->where('is_borrowed', true);
     }

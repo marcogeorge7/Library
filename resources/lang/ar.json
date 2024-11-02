@@ -52,5 +52,7 @@
     "Publish Year" : "سنة النشر",
     "Part Number" : "رقم الجزء",
     "Part Code" : "كود الجزء",
-    "Part Name" : "اسم الجزء"
+    "Part Name" : "اسم الجزء",
+    "Internal Borrowing" : "الاستعارة داخلية",
+    "External Borrowing" : "الاستعارة خارجية"
 }

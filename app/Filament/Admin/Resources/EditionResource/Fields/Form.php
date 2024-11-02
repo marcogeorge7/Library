@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources\EditionResource\Fields;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 
 class Form
 {
@@ -44,6 +45,10 @@ class Form
                                 'en' => 'انجليزي',
                                 'ar' => 'عربي',
                             ]),
+
+                        Toggle::make('internal_borrowing')
+                            ->label(__('Internal Borrowing'))
+                            ->default(false),
 
                     ]
                 ),

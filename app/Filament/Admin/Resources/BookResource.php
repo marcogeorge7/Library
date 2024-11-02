@@ -8,15 +8,12 @@ use App\Filament\Admin\Resources\BookResource\Pages\ListBooks;
 use App\Filament\Admin\Resources\BookResource\Pages\ViewBook;
 use App\Models\Book;
 use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
@@ -42,15 +39,13 @@ class BookResource extends Resource
 
                 Select::make('category_id')
                     ->relationship('category', 'name')
+                    ->label(__('Category Name'))
                     ->searchable()
                     ->required(),
 
-                Select::make('revisor_id')
-                    ->relationship('revisor', 'name')
-                    ->searchable(),
-
                 Select::make('series_id')
                     ->relationship('series', 'name')
+                    ->label(__('Series Name'))
                     ->searchable(),
 
                 Placeholder::make('created_at')
@@ -68,27 +63,31 @@ class BookResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('Book Name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('category.name')
-                    ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('revisor.name')
+                    ->label(__('Category Name'))
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('series.name')
+                    ->label(__('Series Name'))
                     ->searchable()
                     ->sortable(),
+
+                TextColumn::make('editions_no')
+                    ->label(__('Editions Number'))
+                    ->getStateUsing(fn (Book $record) => $record->editions->count())
+                    ->sortable(),
+
             ])
             ->filters([
                 TrashedFilter::make(),
             ])
             ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
+                ViewAction::make(),
             ])
             ->bulkActions([]);
     }

@@ -3,7 +3,7 @@
 namespace App\Filament\Admin\Resources\EditionResource\Fields;
 
 use App\Models\Edition;
-use Filament\Infolists\Components\TextEntry;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class Table
@@ -37,6 +37,10 @@ class Table
             TextColumn::make('lang')
                 ->label(__('Language'))
                 ->formatStateUsing(fn (Edition $record) => $record->lang == 'en' ? 'انجليزي' : 'عربي'),
+
+            IconColumn::make('internal_borrowing')
+                ->label(__('Internal Borrowing'))
+                ->boolean(),
         ];
     }
 }

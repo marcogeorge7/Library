@@ -15,7 +15,6 @@ class CopyFactory extends Factory
     {
         return [
             'barcode' => $this->faker->word(),
-            'internal_borrowing' => $this->faker->boolean(),
             'is_borrowed' => $this->faker->boolean(),
             'is_printed' => $this->faker->word(),
             'created_at' => Carbon::now(),

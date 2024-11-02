@@ -3,7 +3,9 @@
 namespace App\Filament\Admin\Resources\EditionResource\Fields;
 
 use App\Filament\Admin\Resources\BookResource;
+use App\Filament\Admin\Resources\PublisherResource;
 use App\Models\Edition;
+use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 
@@ -22,7 +24,7 @@ class InfoList
 
                     TextEntry::make('publisher.name')
                         ->label(__('Publisher Name'))
-                        ->url(fn ($record) => BookResource::getUrl('view', ['record' => $record->publisher])),
+                        ->url(fn ($record) => PublisherResource::getUrl('view', ['record' => $record->publisher])),
 
                     TextEntry::make('translator_name')
                         ->label(__('Translator Name'))
@@ -39,6 +41,10 @@ class InfoList
                     TextEntry::make('partCode')
                         ->label(__('Part Number'))
                         ->getStateUsing(fn (Edition $record) => $record->partNumber),
+
+                    IconEntry::make('internal_borrowing')
+                        ->label(__('Internal Borrowing'))
+                        ->boolean(),
                 ]),
         ];
     }

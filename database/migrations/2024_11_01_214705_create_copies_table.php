@@ -12,7 +12,6 @@ return new class extends Migration
             $table->id();
             $table->string('barcode');
             $table->unsignedBigInteger('edition_id');
-            $table->boolean('internal_borrowing');
             $table->boolean('is_borrowed')->default(false);
             $table->string('is_printed')->default(false);
 

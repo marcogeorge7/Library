@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,6 +14,13 @@ class Edition extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
+
+    protected function casts(): array
+    {
+        return [
+            'internal_borrowing' => 'boolean',
+        ];
+    }
 
     public function book(): BelongsTo
     {
@@ -44,5 +52,10 @@ class Edition extends Model
             9 => 'الجزء 9',
             10 => 'الجزء 10',
         };
+    }
+
+    public function scopeInternalBorrowing(Builder $query)
+    {
+        return $query->where('internal_borrowing', true);
     }
 }

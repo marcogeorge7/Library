@@ -19,6 +19,7 @@ class EditionFactory extends Factory
             'publish_year' => $this->faker->word(),
             'lang' => $this->faker->word(),
             'cover' => $this->faker->word(),
+            'internal_borrowing' => $this->faker->boolean(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
 
