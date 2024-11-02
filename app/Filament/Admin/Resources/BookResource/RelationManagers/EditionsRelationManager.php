@@ -13,6 +13,8 @@ class EditionsRelationManager extends RelationManager
 {
     protected static string $relationship = 'editions';
 
+    protected static ?string $title = 'طبعات';
+
     protected static ?string $pluralModelLabel = 'طبعات';
 
     protected static ?string $modelLabel = 'طبعة';

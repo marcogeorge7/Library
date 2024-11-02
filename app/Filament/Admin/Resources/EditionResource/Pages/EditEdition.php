@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\EditionResource\Pages;
 
+use App\Filament\Admin\Helpers\RedirectToViewPage;
 use App\Filament\Admin\Resources\EditionResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ForceDeleteAction;
@@ -10,6 +11,7 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditEdition extends EditRecord
 {
+    use RedirectToViewPage;
     protected static string $resource = EditionResource::class;
 
     protected function getHeaderActions(): array

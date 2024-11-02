@@ -34,38 +34,7 @@ class EditionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Select::make('book_id')
-                    ->relationship('book', 'name')
-                    ->searchable()
-                    ->required(),
-
-                TextInput::make('partCode')
-                    ->required()
-                    ->integer(),
-
-                Select::make('publisher_id')
-                    ->relationship('publisher', 'name')
-                    ->searchable()
-                    ->required(),
-
-                TextInput::make('publish_year')
-                    ->required(),
-
-                TextInput::make('lang')
-                    ->required(),
-
-                TextInput::make('cover')
-                    ->required(),
-
-                Placeholder::make('created_at')
-                    ->label('Created Date')
-                    ->content(fn (?Edition $record): string => $record?->created_at?->diffForHumans() ?? '-'),
-
-                Placeholder::make('updated_at')
-                    ->label('Last Modified Date')
-                    ->content(fn (?Edition $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
-            ]);
+            ->schema(EditionResource\Fields\Form::schema());
     }
 
     public static function table(Table $table): Table

@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\EditionResource\Fields;
 
 use App\Models\Edition;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Tables\Columns\TextColumn;
 
 class Table
@@ -28,6 +29,10 @@ class Table
             TextColumn::make('publish_year')
                 ->label(__('Publish Year'))
                 ->getStateUsing(fn ($record) => $record->publish_year ?? '-'),
+
+            TextColumn::make('translator_name')
+                ->label(__('Translator Name'))
+                ->getStateUsing(fn (Edition $record) => $record->translators?->first()?->name ?? '-'),
 
             TextColumn::make('lang')
                 ->label(__('Language'))

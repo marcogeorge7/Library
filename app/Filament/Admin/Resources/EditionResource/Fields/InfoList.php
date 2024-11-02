@@ -24,8 +24,13 @@ class InfoList
                         ->label(__('Publisher Name'))
                         ->url(fn ($record) => BookResource::getUrl('view', ['record' => $record->publisher])),
 
+                    TextEntry::make('translator_name')
+                        ->label(__('Translator Name'))
+                        ->getStateUsing(fn (Edition $record) => $record->translators?->first()?->name ?? '-'),
+
                     TextEntry::make('lang')
-                        ->label(__('Language')),
+                        ->label(__('Language'))
+                        ->getStateUsing(fn (Edition $record) => $record->lang == 'en' ? 'انجليزي' : 'عربي'),
 
                     TextEntry::make('publish_year')
                         ->getStateUsing(fn ($record) => $record->publish_year ?? '-')
@@ -33,7 +38,7 @@ class InfoList
 
                     TextEntry::make('partCode')
                         ->label(__('Part Number'))
-                        ->formatStateUsing(fn (Edition $record) => $record->partNumber),
+                        ->getStateUsing(fn (Edition $record) => $record->partNumber),
                 ]),
         ];
     }
