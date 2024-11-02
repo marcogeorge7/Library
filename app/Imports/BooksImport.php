@@ -11,6 +11,7 @@ use App\Models\Publisher;
 use App\Models\Translator;
 use App\Services\BarCode;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
@@ -20,10 +21,9 @@ class BooksImport implements ToCollection
 
     public function collection(Collection $collection)
     {
-        $headings = $collection[0];
         // book name / number of copies / publisher name / category name / translator name / author name
         $collection->forget(0);
-        foreach ($collection as $row) {
+        foreach ($collection->take(10) as $row) {
             $category = Category::where('name', 'like', "%$row[5]%")->first();
             $publisher = Publisher::where('name', 'like', "%{$row[4]}%")->first();
             if ($row[4] != null && ! $publisher) {
@@ -66,12 +66,18 @@ class BooksImport implements ToCollection
                 'partCode' => $partCode,
                 'publish_year' => null,
             ]);
+            $bookCode = $row[0];
+            $bookBarCode = BarCode::generate($edition, $bookCode);
 
-            for ($i = 0; $i < $copies; $i++) {
+            for ($i = 1; $i <= $copies; $i++) {
                 $copy = Copy::create([
                     'edition_id' => $edition->id,
-                    'barcode' => BarCode::generate($edition),
+                    'barcode' => "$bookBarCode$i",
+                    'internal_borrowing' => $row[3] === 'YES',
+                    'is_borrowed' => false,
                 ]);
+
+                Log::info("Copy created: $copy->barcode for book $row[0]");
             }
         }
     }

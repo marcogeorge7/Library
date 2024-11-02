@@ -4,15 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Schema::create('copies', function (Blueprint $table) {
             $table->id();
             $table->string('barcode');
-            $table->foreignId('edition_id');
-            $table->string('status');
-            $table->string('is_printed');
+            $table->unsignedBigInteger('edition_id');
+            $table->boolean('internal_borrowing');
+            $table->boolean('is_borrowed')->default(false);
+            $table->string('is_printed')->default(false);
+
+            $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
