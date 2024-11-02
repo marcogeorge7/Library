@@ -4,7 +4,6 @@ namespace App\Filament\Admin\Resources\BookResource\Fields;
 
 use App\Filament\Admin\Resources\CategoryResource;
 use App\Filament\Admin\Resources\SeriesResource;
-use App\Models\Book;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 

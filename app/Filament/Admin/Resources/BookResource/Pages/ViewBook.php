@@ -10,17 +10,17 @@ class ViewBook extends ViewRecord
 {
     protected static string $resource = BookResource::class;
 
+    public function getRelationManagers(): array
+    {
+        return [
+            BookResource\RelationManagers\EditionsRelationManager::class,
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [
             Actions\EditAction::make(),
-        ];
-    }
-
-    public function getRelationManagers(): array
-    {
-        return [
-            BookResource\RelationManagers\EditionsRelationManager::class
         ];
     }
 }

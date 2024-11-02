@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('cover')->nullable();
             $table->boolean('internal_borrowing');
 
-
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreign('publisher_id')->references('id')->on('publishers')->onDelete('cascade');
             $table->timestamps();

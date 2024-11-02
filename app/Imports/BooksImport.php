@@ -27,10 +27,15 @@ class BooksImport implements ToCollection, WithChunkReading
         $this->importBooks($collection);
     }
 
+    public function chunkSize(): int
+    {
+        return 100;
+    }
+
     private function importBooks(Collection $books)
     {
         foreach ($books as $row) {
-            $category = Category::where('name', 'like', "%$row[5]%")->first();
+            $category = Category::where('name', 'like', "%{$row[5]}%")->first();
             $publisher = Publisher::where('name', 'like', "%{$row[4]}%")->first();
             if ($row[4] != null && ! $publisher) {
                 $publisher = Publisher::create([
@@ -85,18 +90,13 @@ class BooksImport implements ToCollection, WithChunkReading
             for ($i = 1; $i <= $copies; $i++) {
                 $copy = Copy::create([
                     'edition_id' => $edition->id,
-                    'barcode' => "$bookBarCode$i",
+                    'barcode' => "{$bookBarCode}{$i}",
                     'is_borrowed' => false,
                 ]);
 
-                Log::info("Copy created: $copy->barcode for book [Book-$book->id]");
+                Log::info("Copy created: {$copy->barcode} for book [Book-{$book->id}]");
             }
 
         }
-    }
-
-    public function chunkSize(): int
-    {
-        return 100;
     }
 }
