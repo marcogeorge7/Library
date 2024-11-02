@@ -27,15 +27,10 @@ class BooksImport implements ToCollection, WithChunkReading
         $this->importBooks($collection);
     }
 
-    public function chunkSize(): int
-    {
-        return 100;
-    }
-
     private function importBooks(Collection $books)
     {
         foreach ($books as $row) {
-            $category = Category::where('name', 'like', "%{$row[5]}%")->first();
+            $category = Category::where('name', 'like', "%$row[5]%")->first();
             $publisher = Publisher::where('name', 'like', "%{$row[4]}%")->first();
             if ($row[4] != null && ! $publisher) {
                 $publisher = Publisher::create([
@@ -76,6 +71,7 @@ class BooksImport implements ToCollection, WithChunkReading
                 'publish_year' => null,
                 'lang' => $translator ? 'en' : 'ar',
                 'internal_borrowing' => $row[3] === 'YES',
+
             ]);
 
             if ($row[6] != null && $translator) {
@@ -85,18 +81,33 @@ class BooksImport implements ToCollection, WithChunkReading
             $bookCode = $row[0];
             $bookBarCode = BarCode::generate($edition, $bookCode);
 
-            $copies = (int) $row[2] === 0 ? 1 : $row[2];
+            $copies = (int) $row[2];
+            if ($copies != 0) {
 
-            for ($i = 1; $i <= $copies; $i++) {
-                $copy = Copy::create([
+                for ($i = 1; $i <= $copies; $i++) {
+                    $copy = Copy::create([
+                        'edition_id' => $edition->id,
+                        'barcode' => "$bookBarCode$i",
+                        'is_borrowed' => false,
+                    ]);
+
+                    Log::info("Copy created: $copy->barcode for book [Book-$book->id]");
+                }
+            } else {
+                Copy::create([
                     'edition_id' => $edition->id,
-                    'barcode' => "{$bookBarCode}{$i}",
-                    'is_borrowed' => false,
+                    'barcode' => $bookBarCode.'1',
+                    'internal_borrowing' => $row[3] === 'YES',
+                    'is_borrowed' => true,
                 ]);
-
-                Log::info("Copy created: {$copy->barcode} for book [Book-{$book->id}]");
+                Log::info('Copy Borrowed created: '.$bookBarCode.'1 for book [Book-'.$book->id.']');
             }
 
         }
+    }
+
+    public function chunkSize(): int
+    {
+        return 100;
     }
 }
