@@ -23,7 +23,8 @@ class Book extends BaseModel
 
     public function author()
     {
-        return $this->belongsToMany(Author::class, 'author_books_pivot_table', 'book_id', 'author_id');
+        return $this->belongsToMany(Author::class, 'author_books_pivot_table', 'book_id', 'author_id')
+            ->withTimestamps();
     }
 
     public function editions()

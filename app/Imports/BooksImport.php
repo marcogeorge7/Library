@@ -63,38 +63,45 @@ class BooksImport implements ToCollection, WithChunkReading
             $book->author()->attach($author);
 
             $translator = Translator::where('name', 'like', "%{$row[6]}%")->first();
-            $lang = 'ar';
-            if ($row[6] != null && ! $translator) {
-                $translator = Translator::create([
-                    'name' => $row[6],
-                ]);
-                $lang = 'en';
-            }
 
             $edition = Edition::create([
                 'book_id' => $book->id,
                 'publisher_id' => $publisher->id,
                 'partCode' => $partCode,
                 'publish_year' => null,
-                'lang' => $lang,
+                'lang' => $translator ? 'en' : 'ar',
             ]);
-            $edition->translators()->attach($translator);
+
+            if ($row[6] != null && $translator) {
+                $edition->translators()->attach($translator);
+            }
 
             $bookCode = $row[0];
             $bookBarCode = BarCode::generate($edition, $bookCode);
 
             $copies = (int) $row[2];
+            if ($copies != 0) {
 
-            for ($i = 1; $i <= $copies; $i++) {
-                $copy = Copy::create([
+                for ($i = 1; $i <= $copies; $i++) {
+                    $copy = Copy::create([
+                        'edition_id' => $edition->id,
+                        'barcode' => "$bookBarCode$i",
+                        'internal_borrowing' => $row[3] === 'YES',
+                        'is_borrowed' => false,
+                    ]);
+
+                    Log::info("Copy created: $copy->barcode for book [Book-$book->id]");
+                }
+            } else {
+                Copy::create([
                     'edition_id' => $edition->id,
-                    'barcode' => "$bookBarCode$i",
+                    'barcode' => $bookBarCode.'1',
                     'internal_borrowing' => $row[3] === 'YES',
-                    'is_borrowed' => false,
+                    'is_borrowed' => true,
                 ]);
-
-                Log::info("Copy created: $copy->barcode for book [Book-$book->id]");
+                Log::info('Copy Borrowed created: '.$bookBarCode.'1 for book [Book-'.$book->id.']');
             }
+
         }
     }
 

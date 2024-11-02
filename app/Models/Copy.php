@@ -16,6 +16,8 @@ class Copy extends Model
 
     protected $casts = [
         'internal_borrowing' => 'boolean',
+        'is_printed' => 'boolean',
+        'is_borrowed' => 'boolean',
     ];
 
     public function edition(): BelongsTo

@@ -26,6 +26,7 @@ class Edition extends Model
 
     public function translators(): BelongsToMany
     {
-        return $this->belongsToMany(Translator::class, 'edition_translator_pivot_table', 'edition_id', 'translator_id');
+        return $this->belongsToMany(Translator::class, 'edition_translator_pivot_table', 'edition_id', 'translator_id')
+            ->withTimestamps();
     }
 }

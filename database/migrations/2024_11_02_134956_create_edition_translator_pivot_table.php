@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Edition;
-use App\Models\Translator;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('edition_translator_pivot_table', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Edition::class);
-            $table->foreignIdFor(Translator::class);
+            $table->unsignedBigInteger('edition_id');
+            $table->unsignedBigInteger('translator_id');
+
+            $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
+            $table->foreign('translator_id')->references('id')->on('translators')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
