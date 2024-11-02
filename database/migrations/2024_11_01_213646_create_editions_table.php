@@ -10,8 +10,6 @@ return new class extends Migration
     {
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('slug')->nullable();
             $table->foreignId('book_id');
             $table->integer('partCode');
             $table->foreignId('publisher_id');

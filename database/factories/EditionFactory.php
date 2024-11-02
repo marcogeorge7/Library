@@ -15,8 +15,6 @@ class EditionFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'slug' => $this->faker->slug(),
             'partCode' => $this->faker->randomNumber(),
             'publish_year' => $this->faker->word(),
             'lang' => $this->faker->word(),

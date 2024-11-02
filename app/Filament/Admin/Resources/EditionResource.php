@@ -42,8 +42,6 @@ class EditionResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name'),
-
                 Select::make('book_id')
                     ->relationship('book', 'name')
                     ->searchable()
@@ -81,9 +79,6 @@ class EditionResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->searchable()
-                    ->sortable(),
 
                 TextColumn::make('book.name')
                     ->searchable()

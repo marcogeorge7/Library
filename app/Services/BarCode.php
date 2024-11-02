@@ -21,10 +21,7 @@ class BarCode
         // Generate category prefix based on category ID
         $catPrefix = $catPrefix = (int) ($categoryId / 26).$alphabet[($categoryId % 26) - 1];
 
-        // Get the first four characters of the book's name
-        $bookNamePrefix = substr($bookCode, 0, 4);
-
-        if (Str::length($bookNamePrefix) == 4) {
+        if (Str::length($bookCode) === 4) {
             $series = Series::create([
                 'name' => $edition->book->name,
             ]);
