@@ -11,16 +11,9 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\ForceDeleteAction;
-use Filament\Tables\Actions\ForceDeleteBulkAction;
-use Filament\Tables\Actions\RestoreAction;
-use Filament\Tables\Actions\RestoreBulkAction;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
@@ -78,40 +71,19 @@ class EditionResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-
-                TextColumn::make('book.name')
-                    ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('partCode'),
-
-                TextColumn::make('publisher.name')
-                    ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('publish_year'),
-
-                TextColumn::make('lang'),
-
-                TextColumn::make('cover'),
-            ])
+            ->columns(EditionResource\Fields\Table::columns())
             ->filters([
                 TrashedFilter::make(),
             ])
             ->actions([
                 EditAction::make(),
-                DeleteAction::make(),
-                RestoreAction::make(),
-                ForceDeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                ]),
             ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema(EditionResource\Fields\InfoList::schema());
     }
 
     public static function getPages(): array

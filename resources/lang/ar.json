@@ -47,5 +47,10 @@
     "Edition Details" : "تفاصيل الطبعة",
     "edition" : "طبعة",
     "editions" : "طبعات",
-    "Editions" : "الطبعات"
+    "Editions" : "الطبعات",
+    "Language" : "اللغة",
+    "Publish Year" : "سنة النشر",
+    "Part Number" : "رقم الجزء",
+    "Part Code" : "كود الجزء",
+    "Part Name" : "اسم الجزء"
 }

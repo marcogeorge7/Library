@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Filament\Admin\Resources\EditionResource\Fields;
+
+use App\Models\Edition;
+use Filament\Tables\Columns\TextColumn;
+
+class Table
+{
+    public static function columns($bookId = null): array
+    {
+        return [
+            TextColumn::make('book.name')
+                ->searchable()
+                ->label(__('Book Name'))
+                ->visible(fn () => ! $bookId)
+                ->sortable(),
+
+            TextColumn::make('partCode')
+                ->getStateUsing(fn ($record) => $record->partNumber)
+                ->label(__('Part Number')),
+
+            TextColumn::make('publisher.name')
+                ->label(__('Publisher Name'))
+                ->searchable()
+                ->sortable(),
+
+            TextColumn::make('publish_year')
+                ->label(__('Publish Year'))
+                ->getStateUsing(fn ($record) => $record->publish_year ?? '-'),
+
+            TextColumn::make('lang')
+                ->label(__('Language'))
+                ->formatStateUsing(fn (Edition $record) => $record->lang == 'en' ? 'انجليزي' : 'عربي'),
+        ];
+    }
+}

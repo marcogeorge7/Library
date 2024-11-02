@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enum\BookStatusEnum;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,5 +23,10 @@ class Copy extends Model
     public function edition(): BelongsTo
     {
         return $this->belongsTo(Edition::class);
+    }
+
+    public function scopeIsBorrowed(Builder $query)
+    {
+        return $query->where('is_borrowed', true);
     }
 }

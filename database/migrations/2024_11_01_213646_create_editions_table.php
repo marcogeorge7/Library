@@ -10,12 +10,15 @@ return new class extends Migration
     {
         Schema::create('editions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id');
+            $table->unsignedBigInteger('book_id');
             $table->integer('partCode');
-            $table->foreignId('publisher_id');
+            $table->unsignedBigInteger('publisher_id');
             $table->string('publish_year')->nullable();
             $table->string('lang')->default('ar');
             $table->string('cover')->nullable();
+
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('publisher_id')->references('id')->on('publishers')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -16,4 +16,11 @@ class ViewBook extends ViewRecord
             Actions\EditAction::make(),
         ];
     }
+
+    public function getRelationManagers(): array
+    {
+        return [
+            BookResource\RelationManagers\EditionsRelationManager::class
+        ];
+    }
 }
