@@ -51,7 +51,7 @@ class BooksImport implements ToCollection, WithChunkReading
             }
 
             $book = Book::where('name', $row[1])->first();
-            if (! $book) {
+            if (! $book || $book->author()->where('author_id', $author->id)->doesntExist()) {
                 $book = Book::create([
                     'name' => $row[1],
                     'revisor_id' => null,
@@ -62,7 +62,7 @@ class BooksImport implements ToCollection, WithChunkReading
 
             $book->author()->attach($author);
 
-            $translator = Translator::where('name', 'like', "%{$row[6]}%")->first();
+            $translator = Translator::where('name', $row[6])->first();
 
             $edition = Edition::create([
                 'book_id' => $book->id,

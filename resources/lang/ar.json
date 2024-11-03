@@ -54,5 +54,6 @@
     "Part Code" : "كود الجزء",
     "Part Name" : "اسم الجزء",
     "Internal Borrowing" : "الاستعارة داخلية",
-    "External Borrowing" : "الاستعارة خارجية"
+    "External Borrowing" : "الاستعارة خارجية",
+    "Number In Series" : "الرقم في السلسلة"
 }

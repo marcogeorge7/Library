@@ -15,6 +15,13 @@ class Edition extends Model
 
     protected $guarded = ['id'];
 
+    protected function casts(): array
+    {
+        return [
+            'internal_borrowing' => 'boolean',
+        ];
+    }
+
     public function book(): BelongsTo
     {
         return $this->belongsTo(Book::class);
@@ -29,6 +36,11 @@ class Edition extends Model
     {
         return $this->belongsToMany(Translator::class, 'edition_translator_pivot_table', 'edition_id', 'translator_id')
             ->withTimestamps();
+    }
+
+    public function translator()
+    {
+        return $this->translators()->latest();
     }
 
     public function getPartNumberAttribute()
@@ -50,12 +62,5 @@ class Edition extends Model
     public function scopeInternalBorrowing(Builder $query)
     {
         return $query->where('internal_borrowing', true);
-    }
-
-    protected function casts(): array
-    {
-        return [
-            'internal_borrowing' => 'boolean',
-        ];
     }
 }

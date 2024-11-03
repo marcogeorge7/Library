@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources\EditionResource\Fields;
 
 use App\Filament\Admin\Resources\BookResource;
 use App\Filament\Admin\Resources\PublisherResource;
+use App\Filament\Admin\Resources\SeriesResource;
 use App\Models\Edition;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\Section;
@@ -21,6 +22,10 @@ class InfoList
                     TextEntry::make('book.name')
                         ->label(__('Book Name'))
                         ->url(fn ($record) => BookResource::getUrl('view', ['record' => $record->book])),
+
+                    TextEntry::make('book.series.name')
+                ->label(__('Series Name'))
+                ->url(fn($record) => SeriesResource::getUrl('view',['record'=> $record->book->series])),
 
                     TextEntry::make('publisher.name')
                         ->label(__('Publisher Name'))

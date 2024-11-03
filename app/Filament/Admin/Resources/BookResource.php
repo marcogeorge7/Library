@@ -17,6 +17,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class BookResource extends Resource
 {
@@ -80,7 +81,9 @@ class BookResource extends Resource
                 TextColumn::make('editions_no')
                     ->label(__('Editions Number'))
                     ->getStateUsing(fn (Book $record) => $record->editions->count())
-                    ->sortable(),
+                    ->sortable(query: function (Builder $query, string $direction): Builder {
+                        return $query->withCount('editions')->orderBy('editions_count', $direction);
+                    }),
 
             ])
             ->filters([
