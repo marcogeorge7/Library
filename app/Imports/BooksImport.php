@@ -66,16 +66,18 @@ class BooksImport implements ToCollection, WithChunkReading
 
             $nextBook = $key != 999 ? $books[$key + 1] : $row[0];
             $nextBookCode = Str::substr($nextBook[0], 0, 4);
+            $currentBookCode = Str::substr($row[0], 0, 4);
 
-            if ($row[0] === $nextBookCode) {
+            $series = Series::latest()->first();
+
+            if ($currentBookCode !== $nextBookCode || ! $series) {
                 $series = Series::create([
                     'name' => $book->name,
                 ]);
-                $book->update([
-                    'series_id' => $series->id,
-                ]);
-
             }
+            $book->update([
+                'series_id' => $series->id,
+            ]);
 
             $translator = Translator::where('name', $row[6])->first();
 

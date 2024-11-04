@@ -21,7 +21,7 @@ class AddBooksFromExcel extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Add books from excel';
 
     /**
      * Execute the console command.
