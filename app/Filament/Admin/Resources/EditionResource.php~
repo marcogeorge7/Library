@@ -21,7 +21,9 @@ class EditionResource extends Resource
     protected static ?string $slug = 'editions';
 
     protected static ?string $pluralModelLabel = 'طبعات';
-    
+
+    protected static ?string $recordTitleAttribute = 'name';
+
     protected static ?string $modelLabel = 'طبعة';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

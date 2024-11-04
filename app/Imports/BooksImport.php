@@ -8,10 +8,12 @@ use App\Models\Category;
 use App\Models\Copy;
 use App\Models\Edition;
 use App\Models\Publisher;
+use App\Models\Series;
 use App\Models\Translator;
 use App\Services\BarCode;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
@@ -29,7 +31,7 @@ class BooksImport implements ToCollection, WithChunkReading
 
     private function importBooks(Collection $books)
     {
-        foreach ($books as $row) {
+        foreach ($books as $key => $row) {
             $category = Category::where('name', 'like', "%$row[5]%")->first();
             $publisher = Publisher::where('name', 'like', "%{$row[4]}%")->first();
             if ($row[4] != null && ! $publisher) {
@@ -61,6 +63,19 @@ class BooksImport implements ToCollection, WithChunkReading
             }
 
             $book->author()->attach($author);
+
+            $nextBook = $key != 999 ? $books[$key + 1] : $row[0];
+            $nextBookCode = Str::substr($nextBook[0], 0, 4);
+
+            if ($row[0] === $nextBookCode) {
+                $series = Series::create([
+                    'name' => $book->name,
+                ]);
+                $book->update([
+                    'series_id' => $series->id,
+                ]);
+
+            }
 
             $translator = Translator::where('name', $row[6])->first();
 
@@ -108,6 +123,6 @@ class BooksImport implements ToCollection, WithChunkReading
 
     public function chunkSize(): int
     {
-        return 100;
+        return 1000;
     }
 }

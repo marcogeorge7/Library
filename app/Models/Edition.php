@@ -43,6 +43,11 @@ class Edition extends Model
         return $this->translators()->latest();
     }
 
+    public function copies()
+    {
+        return $this->hasMany(Copy::class, 'edition_id', 'id');
+    }
+
     public function getPartNumberAttribute()
     {
         return match ($this->partCode) {
@@ -62,5 +67,16 @@ class Edition extends Model
     public function scopeInternalBorrowing(Builder $query)
     {
         return $query->where('internal_borrowing', true);
+    }
+
+    public function numberInBook()
+    {
+        return $this->book()->orderBy('created_at')->pluck('id')->search($this->id) + 1;
+    }
+
+    public function copyOrderInEdition($copyId)
+    {
+        $position = $this->copies()->pluck('id')->search($copyId);
+        return $position !== false ? $position + 1 : 0;
     }
 }

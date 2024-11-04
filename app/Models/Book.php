@@ -37,8 +37,9 @@ class Book extends BaseModel
         return $this->hasManyThrough(Copy::class, Edition::class);
     }
 
-    public function numberInSeries()
+    public function editionOrderInBook($editionId)
     {
-        return $this->series()->orderBy('created_at')->pluck('id')->search($this->id) + 1;
+        $position = $this->editions()->pluck('id')->search($editionId);
+        return $position !== false ? $position + 1 : 0;
     }
 }

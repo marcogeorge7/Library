@@ -55,5 +55,8 @@
     "Part Name" : "اسم الجزء",
     "Internal Borrowing" : "الاستعارة داخلية",
     "External Borrowing" : "الاستعارة خارجية",
-    "Number In Series" : "الرقم في السلسلة"
+    "Number In Series" : "الرقم في السلسلة",
+    "Editions Number" : "عدد الطبعات",
+    "Is Borrowed" : "مستعار",
+    "Barcode" : "باركود"
 }

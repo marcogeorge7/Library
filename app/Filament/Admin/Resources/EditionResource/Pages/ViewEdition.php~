@@ -19,8 +19,6 @@ class ViewEdition extends ViewRecord
 
     public function getRelationManagers(): array
     {
-        return [
-            EditionResource\RelationManagers\CopiesRelationManager::class,
-        ];
+        return [];
     }
 }

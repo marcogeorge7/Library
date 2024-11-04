@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Filament\Admin\Resources\CopyResource\Fields;
+
+use App\Models\Edition;
+use Filament\Tables\Columns\TextColumn;
+
+class Table
+{
+    public function columns(?Edition $edition)
+    {
+        return [
+            TextColumn::make('barcode')
+                ->label(__('Barcode'))
+                ->copyable()
+                ->searchable(),
+            TextColumn::make('is_borrowed')
+                ->boolean()
+                ->label(__('Is Borrowed')),
+            TextColumn::make('edition.name')
+                ->label(__('Edition Name')),
+        ];
+    }
+}
