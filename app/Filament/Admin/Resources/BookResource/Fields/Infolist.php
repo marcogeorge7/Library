@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\BookResource\Fields;
 
+use App\Filament\Admin\Resources\AuthorResource;
 use App\Filament\Admin\Resources\CategoryResource;
 use App\Filament\Admin\Resources\SeriesResource;
 use App\Models\Book;
@@ -25,11 +26,12 @@ class Infolist
 
                     TextEntry::make('series.name')
                         ->label(__('Series Name'))
-                        ->url(fn ($record) => SeriesResource::getUrl('view', ['record' => $record->series])),
+                        ->url(rescue(callback: fn (Book $record) => SeriesResource::getUrl('view', ['record' => $record->series]), rescue : '#', report: false)),
 
                     TextEntry::make('author_name')
                         ->label(__('Author Name'))
-                        ->getStateUsing(fn (Book $record) => $record->author()->first()->name),
+                        ->getStateUsing(fn (Book $record) => $record->author()->first()->name)
+                        ->url(rescue(callback: fn (Book $record) => AuthorResource::getUrl('view', ['record' => $record->author()->first()]), rescue : '#', report: false)),
                 ]),
         ];
     }

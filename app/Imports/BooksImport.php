@@ -52,6 +52,10 @@ class BooksImport implements ToCollection, WithChunkReading
                 $partCode = $matches[1];
             }
 
+            $isSeries = false;
+            $sameSeries = false;
+            $nextBookCode = $key != 999 ? $books[$key + 1][0] : $row[0];
+
             $book = Book::where('name', $row[1])->first();
             if (! $book || $book->author()->where('author_id', $author->id)->doesntExist()) {
                 $book = Book::create([
@@ -60,24 +64,27 @@ class BooksImport implements ToCollection, WithChunkReading
                     'category_id' => $category->id,
                     'series_id' => null,
                 ]);
+                $book->author()->attach($author);
             }
 
-            $book->author()->attach($author);
+            if (Str::length($row[0]) === 5) {
+                $sameSeries = true;
+            }
+            if (Str::length($row[0]) === 4 && Str::length($nextBookCode) === 5) {
+                $isSeries = true;
+            }
 
-            $nextBook = $key != 999 ? $books[$key + 1] : $row[0];
-            $nextBookCode = Str::substr($nextBook[0], 0, 4);
-            $currentBookCode = Str::substr($row[0], 0, 4);
-
-            $series = Series::latest()->first();
-
-            if ($currentBookCode !== $nextBookCode || ! $series) {
+            if ($sameSeries) {
+                $book->series_id = Series::orderByDesc('id')->first()->id;
+                $book->save();
+            }
+            if ($isSeries) {
                 $series = Series::create([
-                    'name' => $book->name,
+                    'name' => $row[1],
                 ]);
+                $book->series_id = $series->id;
+                $book->save();
             }
-            $book->update([
-                'series_id' => $series->id,
-            ]);
 
             $translator = Translator::where('name', $row[6])->first();
 
