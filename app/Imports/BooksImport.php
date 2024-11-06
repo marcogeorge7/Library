@@ -63,6 +63,7 @@ class BooksImport implements ToCollection, WithChunkReading
                     'revisor_id' => null,
                     'category_id' => $category->id,
                     'series_id' => null,
+                    'old_code' => $row[0],
                 ]);
                 $book->author()->attach($author);
             }
@@ -103,7 +104,7 @@ class BooksImport implements ToCollection, WithChunkReading
             }
 
             $bookCode = $row[0];
-            $bookBarCode = BarCode::generate($edition, $bookCode);
+            $bookBarCode = BarCode::generate($edition);
 
             $copies = (int) $row[2];
             if ($copies != 0) {
@@ -124,7 +125,7 @@ class BooksImport implements ToCollection, WithChunkReading
                     'internal_borrowing' => $row[3] === 'YES',
                     'is_borrowed' => true,
                 ]);
-                Log::info('Copy Borrowed created: '.$bookBarCode.'1 for book [Book-'.$book->id.']');
+                Log::info('Copy Borrowed created: '.$bookBarCode.' for book [Book-'.$book->id.']');
             }
 
         }

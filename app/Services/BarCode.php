@@ -65,7 +65,7 @@ class BarCode
         return $id;
     }
 
-    public static function generate(Edition $edition, $bookCode): string
+    public static function generate(Edition $edition): string
     {
         // Get copy details
         $book = $edition->book;

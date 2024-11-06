@@ -11,7 +11,7 @@ use Filament\Forms\Form;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Filters\TrashedFilter;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Table;
 
 class EditionResource extends Resource
@@ -21,7 +21,7 @@ class EditionResource extends Resource
     protected static ?string $slug = 'editions';
 
     protected static ?string $pluralModelLabel = 'طبعات';
-    
+
     protected static ?string $modelLabel = 'طبعة';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -36,11 +36,10 @@ class EditionResource extends Resource
     {
         return $table
             ->columns(EditionResource\Fields\Table::columns())
-            ->filters([
-                TrashedFilter::make(),
-            ])
+            ->filters([])
             ->actions([
                 EditAction::make(),
+                ViewAction::make(),
             ]);
     }
 

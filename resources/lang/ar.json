@@ -58,5 +58,7 @@
     "Number In Series" : "الرقم في السلسلة",
     "Editions Number" : "عدد الطبعات",
     "Is Borrowed" : "مستعار",
-    "Barcode" : "باركود"
+    "Barcode" : "باركود",
+    "Old Code" : "الكود القديم",
+    "Copies Number" : "عدد النسخ"
 }

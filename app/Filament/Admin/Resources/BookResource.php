@@ -85,6 +85,18 @@ class BookResource extends Resource
                         return $query->withCount('editions')->orderBy('editions_count', $direction);
                     }),
 
+                TextColumn::make('copies_no')
+                    ->label(__('Copies Number'))
+                    ->getStateUsing(fn (Book $record) => $record->copies->count())
+                    ->sortable(query: function (Builder $query, string $direction): Builder {
+                        return $query->withCount('copies')->orderBy('copies_count', $direction);
+                    }),
+
+                TextColumn::make('old_code')
+                    ->label(__('Old Code'))
+                    ->searchable()
+                    ->sortable(),
+
             ])
             ->filters([
                 TrashedFilter::make(),

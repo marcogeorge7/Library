@@ -32,6 +32,14 @@ class Infolist
                         ->label(__('Author Name'))
                         ->getStateUsing(fn (Book $record) => $record->author()->first()->name)
                         ->url(rescue(callback: fn (Book $record) => AuthorResource::getUrl('view', ['record' => $record->author()->first()]), rescue : '#', report: false)),
+
+                    TextEntry::make('copies_no')
+                        ->label(__('Copies Number'))
+                        ->getStateUsing(fn (Book $record) => $record->copies->count()),
+
+                    TextEntry::make('old_code')
+                        ->label(__('Old Code'))
+                        ->getStateUsing(fn (Book $record) => $record->old_code),
                 ]),
         ];
     }

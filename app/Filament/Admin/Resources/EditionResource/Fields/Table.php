@@ -38,6 +38,10 @@ class Table
                 ->label(__('Language'))
                 ->formatStateUsing(fn (Edition $record) => $record->lang == 'en' ? 'انجليزي' : 'عربي'),
 
+            TextColumn::make('copies_no')
+                ->label(__('Copies Number'))
+                ->getStateUsing(fn (Edition $record) => $record->copies->count()),
+
             IconColumn::make('internal_borrowing')
                 ->label(__('Internal Borrowing'))
                 ->boolean(),

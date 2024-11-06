@@ -24,8 +24,8 @@ class InfoList
                         ->url(fn ($record) => BookResource::getUrl('view', ['record' => $record->book])),
 
                     TextEntry::make('book.series.name')
-                ->label(__('Series Name'))
-                ->url(fn($record) => SeriesResource::getUrl('view',['record'=> $record->book->series])),
+                        ->label(__('Series Name'))
+                        ->url(rescue(fn ($record) => SeriesResource::getUrl('view', ['record' => $record->book->series]), '#', report: false)),
 
                     TextEntry::make('publisher.name')
                         ->label(__('Publisher Name'))
