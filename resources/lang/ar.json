@@ -60,5 +60,7 @@
     "Is Borrowed" : "مستعار",
     "Barcode" : "باركود",
     "Old Code" : "الكود القديم",
-    "Copies Number" : "عدد النسخ"
+    "Copies Number" : "عدد النسخ",
+    "Book Order" : "ترتيب الكتاب",
+    "Books Count" : "عدد الكتب"
 }

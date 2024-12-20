@@ -39,14 +39,17 @@ class Book extends BaseModel
 
     public function editionOrderInBook($editionId)
     {
-        $position = $this->editions()->pluck('id')->search($editionId);
-        return $position !== false ? $position + 1 : 0;
+        return $this->editions()
+            ->orderBy('created_at')
+            ->pluck('id')
+            ->search($editionId) + 1;
     }
 
     public function getLastBookOrderInCategory()
     {
         $order = $this->category?->books()->orderByDesc('order')->first()?->order ?? 0;
         $order++;
+
         return $order;
     }
 

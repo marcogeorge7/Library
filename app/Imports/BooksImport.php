@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToCollection;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class BooksImport implements ToCollection, WithChunkReading
+class BooksImport implements ToCollection
 {
     use Importable;
 
@@ -35,6 +34,9 @@ class BooksImport implements ToCollection, WithChunkReading
     private function importBooks(Collection $books)
     {
         $books->each(function ($row, $key) use ($books) {
+            if ($key === 8163) {
+                exit;
+            }
             $category = $this->findOrCreateCategory($row[5]);
 
             $publisher = $this->findOrCreatePublisher($row[4]);
@@ -147,7 +149,7 @@ class BooksImport implements ToCollection, WithChunkReading
                     'barcode' => "$bookBarCode$i",
                     'is_borrowed' => false,
                 ]);
-                Log::info("Copy created: $copy->barcode for book [Book-$book->id]");
+                Log::info("Copy created: $copy->barcode for book [Book-$book->id] of old code [$book->old_code] , Series = [$book->series_id]");
             }
         } else {
             Copy::create([
@@ -156,12 +158,12 @@ class BooksImport implements ToCollection, WithChunkReading
                 'internal_borrowing' => $internalBorrowing === 'YES',
                 'is_borrowed' => true,
             ]);
-            Log::info("Copy Borrowed created: $bookBarCode for book [Book-$book->id]");
+            Log::info("Copy Borrowed created: $bookBarCode for book [Book-$book->id] of [$book->old_code] , Series = [$book->series_id]");
         }
     }
 
-    public function chunkSize(): int
-    {
-        return 4000;
-    }
+    //    public function chunkSize(): int
+    //    {
+    //        return 4000;
+    //    }
 }

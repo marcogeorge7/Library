@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\CategoryResource\Pages\CreateCategory;
 use App\Filament\Admin\Resources\CategoryResource\Pages\EditCategory;
 use App\Filament\Admin\Resources\CategoryResource\Pages\ListCategories;
 use App\Filament\Admin\Resources\CategoryResource\Pages\ViewCategory;
+use App\Filament\Admin\Resources\CategoryResource\RelationManagers\BooksRelationManager;
 use App\Models\Category;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -52,6 +53,11 @@ class CategoryResource extends Resource
                     ->label(__('Category Name'))
                     ->searchable()
                     ->sortable(),
+
+                TextColumn::make('book_count')
+                    ->label(__('Books Count'))
+                    ->default(fn (Category $record) => $record->books->count())
+                    ->sortable(),
             ])
             ->filters([
                 TrashedFilter::make(),
@@ -72,12 +78,25 @@ class CategoryResource extends Resource
     {
         return $infolist->schema([
             Section::make(__('Category Details'))
+                ->columns()
                 ->schema([
                     TextEntry::make('name')
                         ->label(__('Category Name'))
                         ->icon('heroicon-o-tag'),
+
+                    TextEntry::make('book_count')
+                        ->label(__('Books Count'))
+                        ->default(fn (Category $record) => $record->books->count())
+                        ->icon('heroicon-o-book-open'),
                 ]),
         ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            BooksRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

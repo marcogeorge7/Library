@@ -62,45 +62,8 @@ class BookResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                TextColumn::make('name')
-                    ->label(__('Book Name'))
-                    ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('category.name')
-                    ->label(__('Category Name'))
-                    ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('series.name')
-                    ->label(__('Series Name'))
-                    ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('editions_no')
-                    ->label(__('Editions Number'))
-                    ->getStateUsing(fn (Book $record) => $record->editions->count())
-                    ->sortable(query: function (Builder $query, string $direction): Builder {
-                        return $query->withCount('editions')->orderBy('editions_count', $direction);
-                    }),
-
-                TextColumn::make('copies_no')
-                    ->label(__('Copies Number'))
-                    ->getStateUsing(fn (Book $record) => $record->copies->count())
-                    ->sortable(query: function (Builder $query, string $direction): Builder {
-                        return $query->withCount('copies')->orderBy('copies_count', $direction);
-                    }),
-
-                TextColumn::make('old_code')
-                    ->label(__('Old Code'))
-                    ->searchable()
-                    ->sortable(),
-
-            ])
-            ->filters([
-                TrashedFilter::make(),
-            ])
+            ->columns(BookResource\Fields\Table::columns())
+            ->filters([])
             ->actions([
                 ViewAction::make(),
             ])

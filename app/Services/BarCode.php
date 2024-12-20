@@ -52,10 +52,13 @@ class BarCode
     {
         $book = $edition->book;
         $categoryCode = self::toAlphabeticCode($book->category->id, 1);
-        $bookOrder = self::toAlphabeticCode($book->order, 1);
+        $bookOrder = $book->order < 10 ? '0'.$book->order : $book->order;
+
+        $bookInSeries = $book?->series?->bookOrderInSeries($book->id) ?? null;
 
         $seriesCode = $book->series_id
-            ? self::toAlphabeticCode($book->series->bookOrderInSeries($book->id), 0)
+            ? $bookInSeries < 10 ?
+                '0'.$bookInSeries : $bookInSeries
             : self::DEFAULT_SERIES_POSITION;
 
         $bookCode = $bookOrder.$seriesCode;
