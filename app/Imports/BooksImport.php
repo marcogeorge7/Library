@@ -18,7 +18,7 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class BooksImport implements ToCollection,WithChunkReading
+class BooksImport implements ToCollection, WithChunkReading
 {
     use Importable;
 
@@ -29,15 +29,13 @@ class BooksImport implements ToCollection,WithChunkReading
     public function collection(Collection $collection)
     {
         $collection->forget(0);
+
         $this->importBooks($collection);
     }
 
     private function importBooks(Collection $books)
     {
         $books->each(function ($row, $key) use ($books) {
-            if ($key === 8163) {
-                exit;
-            }
             $category = $this->findOrCreateCategory($row[5]);
 
             $publisher = $this->findOrCreatePublisher($row[4]);
@@ -109,7 +107,7 @@ class BooksImport implements ToCollection,WithChunkReading
 
     private function handleSeriesLogic($book, $row, $key, $books)
     {
-        $nextBookCode = $key != 3999 ? $books[$key + 1][0] : $row[0];
+        $nextBookCode = $key < ($books->count() - 1) ? $books[$key + 1][0] : $row[0];
         $currentCodeLength = Str::length($row[0]);
 
         if ($currentCodeLength === self::SERIES_CODE_LENGTH) {
@@ -150,7 +148,7 @@ class BooksImport implements ToCollection,WithChunkReading
                     'barcode' => "$bookBarCode$i",
                     'is_borrowed' => false,
                 ]);
-                Log::info("Copy created: $copy->barcode for book [Book-$book->id] of old code [$book->old_code] , Series = [$book->series_id]");
+                Log::info("Copy created: $copy->barcode for book [Book-$book->id]");
             }
         } else {
             Copy::create([
@@ -159,16 +157,12 @@ class BooksImport implements ToCollection,WithChunkReading
                 'internal_borrowing' => $internalBorrowing === 'YES',
                 'is_borrowed' => true,
             ]);
-            Log::info("Copy Borrowed created: $bookBarCode for book [Book-$book->id] of [$book->old_code] , Series = [$book->series_id]");
+            Log::info("Copy Borrowed created: $bookBarCode for book [Book-$book->id]");
         }
     }
 
-    //    public function chunkSize(): int
-    //    {
-    //        return 4000;
-    //    }
     public function chunkSize(): int
     {
-        return 8160;
+        return 8163;
     }
 }
