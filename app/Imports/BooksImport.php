@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class BooksImport implements ToCollection
+class BooksImport implements ToCollection,WithChunkReading
 {
     use Importable;
 
@@ -166,4 +167,8 @@ class BooksImport implements ToCollection
     //    {
     //        return 4000;
     //    }
+    public function chunkSize(): int
+    {
+        return 8160;
+    }
 }
