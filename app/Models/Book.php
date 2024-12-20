@@ -42,4 +42,16 @@ class Book extends BaseModel
         $position = $this->editions()->pluck('id')->search($editionId);
         return $position !== false ? $position + 1 : 0;
     }
+
+    public function getLastBookOrderInCategory()
+    {
+        $order = $this->category?->books()->orderByDesc('order')->first()?->order ?? 0;
+        $order++;
+        return $order;
+    }
+
+    public function hasSeries()
+    {
+        return boolval($this->series_id);
+    }
 }

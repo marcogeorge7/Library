@@ -22,117 +22,146 @@ class BooksImport implements ToCollection, WithChunkReading
 {
     use Importable;
 
+    private const SERIES_CODE_LENGTH = 5;
+
+    private const PARENT_CODE_LENGTH = 4;
+
     public function collection(Collection $collection)
     {
         $collection->forget(0);
-
         $this->importBooks($collection);
     }
 
     private function importBooks(Collection $books)
     {
-        foreach ($books as $key => $row) {
-            $category = Category::where('name', 'like', "%$row[5]%")->first();
-            $publisher = Publisher::where('name', 'like', "%{$row[4]}%")->first();
-            if ($row[4] != null && ! $publisher) {
-                $publisher = Publisher::create([
-                    'name' => $row[4],
-                ]);
-            }
-            $author = Author::where('name', 'like', "%{$row[7]}%")->first();
-            if ($row[7] != null && ! $author) {
-                $author = Author::create([
-                    'name' => $row[7],
-                ]);
-            }
+        $books->each(function ($row, $key) use ($books) {
+            $category = $this->findOrCreateCategory($row[5]);
 
-            $partCode = 1;
+            $publisher = $this->findOrCreatePublisher($row[4]);
 
-            if (preg_match('/\bج(\d+)\b(?!\s*-)/u', $row[1], $matches)) {
-                $partCode = $matches[1];
-            }
-
-            $isSeries = false;
-            $sameSeries = false;
-            $nextBookCode = $key != 999 ? $books[$key + 1][0] : $row[0];
-
-            $book = Book::where('name', $row[1])->first();
-            if (! $book || $book->author()->where('author_id', $author->id)->doesntExist()) {
-                $book = Book::create([
-                    'name' => $row[1],
-                    'revisor_id' => null,
-                    'category_id' => $category->id,
-                    'series_id' => null,
-                    'old_code' => $row[0],
-                ]);
-                $book->author()->attach($author);
-            }
-
-            if (Str::length($row[0]) === 5) {
-                $sameSeries = true;
-            }
-            if (Str::length($row[0]) === 4 && Str::length($nextBookCode) === 5) {
-                $isSeries = true;
-            }
-
-            if ($sameSeries) {
-                $book->series_id = Series::orderByDesc('id')->first()->id;
-                $book->save();
-            }
-            if ($isSeries) {
-                $series = Series::create([
-                    'name' => $row[1],
-                ]);
-                $book->series_id = $series->id;
-                $book->save();
-            }
+            $author = $this->findOrCreateAuthor($row[7]);
 
             $translator = Translator::where('name', $row[6])->first();
 
-            $edition = Edition::create([
-                'book_id' => $book->id,
-                'publisher_id' => $publisher->id,
-                'partCode' => $partCode,
-                'publish_year' => null,
-                'lang' => $translator ? 'en' : 'ar',
-                'internal_borrowing' => $row[3] === 'YES',
+            $partCode = $this->extractPartCode($row[1]);
+            $book = $this->createOrUpdateBook($row, $category, $author);
 
-            ]);
+            $this->handleSeriesLogic($book, $row, $key, $books);
 
-            if ($row[6] != null && $translator) {
+            $edition = $this->createEdition($book, $publisher, $partCode, $translator, $row[3]);
+
+            if ($translator) {
                 $edition->translators()->attach($translator);
             }
 
-            $bookCode = $row[0];
-            $bookBarCode = BarCode::generate($edition);
+            $this->createCopies($edition, $row[2], $row[3], $book);
+        });
+    }
 
-            $copies = (int) $row[2];
-            if ($copies != 0) {
+    private function findOrCreateCategory($name)
+    {
+        return Category::where('name', 'like', "%$name%")->first();
+    }
 
-                for ($i = 1; $i <= $copies; $i++) {
-                    $copy = Copy::create([
-                        'edition_id' => $edition->id,
-                        'barcode' => "$bookBarCode$i",
-                        'is_borrowed' => false,
-                    ]);
+    private function findOrCreatePublisher($name)
+    {
+        if (! $name) {
+            return null;
+        }
 
-                    Log::info("Copy created: $copy->barcode for book [Book-$book->id]");
-                }
-            } else {
-                Copy::create([
+        return Publisher::firstOrCreate(['name' => $name]);
+    }
+
+    private function findOrCreateAuthor($name)
+    {
+        if (! $name) {
+            return null;
+        }
+
+        return Author::firstOrCreate(['name' => $name]);
+    }
+
+    private function extractPartCode($bookName)
+    {
+        preg_match('/\bج(\d+)\b(?!\s*-)/u', $bookName, $matches);
+
+        return $matches[1] ?? 1;
+    }
+
+    private function createOrUpdateBook($row, $category, $author)
+    {
+        $book = Book::where('name', $row[1])->first();
+
+        if (! $book || $book->author()->where('author_id', $author->id)->doesntExist()) {
+            $book = Book::create([
+                'name' => $row[1],
+                'category_id' => $category->id,
+                'old_code' => $row[0],
+            ]);
+            $book->author()->attach($author);
+        }
+
+        return $book;
+    }
+
+    private function handleSeriesLogic($book, $row, $key, $books)
+    {
+        $nextBookCode = $key != 3999 ? $books[$key + 1][0] : $row[0];
+        $currentCodeLength = Str::length($row[0]);
+
+        if ($currentCodeLength === self::SERIES_CODE_LENGTH) {
+            $seriesId = Series::orderByDesc('id')->first()->id;
+            $book->update([
+                'series_id' => $seriesId,
+                'order' => Book::where('series_id', $seriesId)->first()->order,
+            ]);
+        } else {
+            $book->update(['order' => $book->getLastBookOrderInCategory()]);
+        }
+
+        if ($currentCodeLength === self::PARENT_CODE_LENGTH && Str::length($nextBookCode) === self::SERIES_CODE_LENGTH) {
+            $series = Series::create(['name' => $row[1]]);
+            $book->update(['series_id' => $series->id]);
+        }
+    }
+
+    private function createEdition($book, $publisher, $partCode, $translator, $internalBorrowing)
+    {
+        return Edition::create([
+            'book_id' => $book->id,
+            'publisher_id' => $publisher->id,
+            'partCode' => $partCode,
+            'lang' => $translator ? 'en' : 'ar',
+            'internal_borrowing' => $internalBorrowing === 'YES',
+        ]);
+    }
+
+    private function createCopies($edition, $copiesCount, $internalBorrowing, $book)
+    {
+        $bookBarCode = BarCode::generate($edition);
+
+        if ((int) $copiesCount > 0) {
+            for ($i = 1; $i <= (int) $copiesCount; $i++) {
+                $copy = Copy::create([
                     'edition_id' => $edition->id,
-                    'barcode' => $bookBarCode.'1',
-                    'internal_borrowing' => $row[3] === 'YES',
-                    'is_borrowed' => true,
+                    'barcode' => "$bookBarCode$i",
+                    'is_borrowed' => false,
                 ]);
-                Log::info('Copy Borrowed created: '.$bookBarCode.' for book [Book-'.$book->id.']');
+                Log::info("Copy created: $copy->barcode for book [Book-$book->id]");
             }
-
+        } else {
+            Copy::create([
+                'edition_id' => $edition->id,
+                'barcode' => $bookBarCode.'1',
+                'internal_borrowing' => $internalBorrowing === 'YES',
+                'is_borrowed' => true,
+            ]);
+            Log::info("Copy Borrowed created: $bookBarCode for book [Book-$book->id]");
         }
     }
 
     public function chunkSize(): int
     {
-        return 1000;
+        return 4000;
     }
 }

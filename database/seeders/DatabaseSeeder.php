@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $user = User::firstOrCreate([
-            'name' => 'Admin',
+            'name' => 'Ad]min',
             'email' => 'admin@library.com',
             'password' => bcrypt('123456789'),
         ]);

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('revisor_id')->nullable();
             $table->unsignedBigInteger('series_id')->nullable();
             $table->string('old_code')->nullable();
+            $table->integer('order')->default(0);
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('revisor_id')->references('id')->on('users')->onDelete('cascade');
