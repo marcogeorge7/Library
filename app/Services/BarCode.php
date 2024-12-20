@@ -52,13 +52,12 @@ class BarCode
     {
         $book = $edition->book;
         $categoryCode = self::toAlphabeticCode($book->category->id, 1);
-        $bookOrder = $book->order < 10 ? '0'.$book->order : $book->order;
+        $bookOrder = self::padNumber($book->order);
 
         $bookInSeries = $book?->series?->bookOrderInSeries($book->id) ?? null;
 
         $seriesCode = $book->series_id
-            ? $bookInSeries < 10 ?
-                '0'.$bookInSeries : $bookInSeries
+            ? self::padNumber($bookInSeries, 2)
             : self::DEFAULT_SERIES_POSITION;
 
         $bookCode = $bookOrder.$seriesCode;
@@ -76,5 +75,10 @@ class BarCode
         if (strlen(substr($code, 0, $length)) !== $length) {
             throw new Exception('Numeric part does not match the specified length.');
         }
+    }
+
+    private static function padNumber(int $number, int $length = 3): string
+    {
+        return str_pad($number, $length, '0', STR_PAD_LEFT);
     }
 }
