@@ -62,7 +62,7 @@ class BookResource extends Resource
                             ->live()
                             ->label(__('Is Series'))
                             ->default(false)
-                            ->afterStateHydrated(fn(Checkbox $component, Book $record) => $component->state($record->hasSeries()))
+                            ->afterStateHydrated(fn(Checkbox $component, ?Book $record) => ($record)? $component->state($record->hasSeries()): null)
                             ->disabled(fn($record) => $record ?? false),
 
                         Select::make('series_id')
