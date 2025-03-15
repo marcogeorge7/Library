@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\EditionResource\Fields;
 
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -34,10 +35,10 @@ class Form
                             ->searchable()
                             ->required(),
 
-                        TextInput::make('publish_year')
+                        DatePicker::make('publish_year')
                             ->label(__('Publish Year'))
-                            ->numeric()
-                            ->required(),
+                            ->minDate(now()->subYears(100))
+                            ->maxDate(now()),
 
                         Select::make('lang')
                             ->label(__('Language'))
