@@ -62,5 +62,10 @@
     "Old Code" : "الكود القديم",
     "Copies Number" : "عدد النسخ",
     "Book Order" : "ترتيب الكتاب",
-    "Books Count" : "عدد الكتب"
+    "Books Count" : "عدد الكتب",
+    "Book Main Details" : "تفاصيل الكتاب الرئيسية",
+    "Book Editions" : "طبعات الكتاب",
+    "Edition Details" : "تفاصيل الطبعة",
+    "Add Publisher" : "اضافة ناشر",
+    "Is Series" : "داخل السلسلة"
 }

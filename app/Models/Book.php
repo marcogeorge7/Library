@@ -8,6 +8,7 @@ use Spatie\Sluggable\HasSlug;
 class Book extends BaseModel
 {
     use HasSlug;
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -42,9 +43,9 @@ class Book extends BaseModel
     public function editionOrderInBook($editionId)
     {
         return $this->editions()
-                ->orderBy('created_at')
-                ->pluck('id')
-                ->search($editionId) + 1;
+            ->orderBy('created_at')
+            ->pluck('id')
+            ->search($editionId) + 1;
     }
 
     public function getLastBookOrderInCategory()
@@ -60,7 +61,7 @@ class Book extends BaseModel
         return boolval($this->series_id);
     }
 
-    static function getNextOrderInCategory($categoryId)
+    public static function getNextOrderInCategory($categoryId)
     {
         return Book::query()->where('category_id', $categoryId)->orderByDesc('order')->first('order')->order ?? 0;
     }

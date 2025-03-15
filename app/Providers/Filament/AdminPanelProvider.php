@@ -11,15 +11,6 @@ use App\Filament\Admin\Resources\RevisorResource;
 use App\Filament\Admin\Resources\SeriesResource;
 use App\Filament\Admin\Resources\SubjectResource;
 use App\Filament\Admin\Resources\TranslatorResource;
-use App\Models\Author;
-use App\Models\Book;
-use App\Models\Category;
-use App\Models\Edition;
-use App\Models\Publisher;
-use App\Models\Revisor;
-use App\Models\Series;
-use App\Models\Subject;
-use App\Models\Translator;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -38,12 +29,15 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+
         return $panel
             ->id('admins')
             ->path('admin')
@@ -57,6 +51,28 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->navigation(function (NavigationBuilder $builder) {
+                $tables = [
+                    'books',
+                    'categories',
+                    'publishers',
+                    'authors',
+                    'series',
+                    'subjects',
+                    'translators',
+                    'revisors',
+                    'editions',
+
+                ];
+                $query = collect($tables)
+                    ->map(fn ($table) => "SELECT '$table' AS table_name, COUNT(*) AS total FROM $table")
+                    ->implode(' UNION ALL ');
+
+                $results = collect(DB::select($query))->pluck('total', 'table_name');
+
+                $results = Cache::remember('admin_tables_count', 60, function () use ($results) {
+                    return $results;
+                });
+
                 return $builder->groups([
                     NavigationGroup::make(__('Dashboard'))
                         ->items([
@@ -71,31 +87,31 @@ class AdminPanelProvider extends PanelProvider
                         ->items([
                             NavigationItem::make(__('Categories'))
                                 ->url(CategoryResource::getUrl())
-                                ->badge(Category::count(), color: 'warning'),
+                                ->badge($results['categories'], color: 'warning'),
 
                             NavigationItem::make(__('Authors'))
                                 ->url(AuthorResource::getUrl())
-                                ->badge(Author::count(), color: 'warning'),
+                                ->badge($results['authors'], color: 'warning'),
 
                             NavigationItem::make(__('Publishers'))
                                 ->url(PublisherResource::getUrl())
-                                ->badge(Publisher::count(), color: 'warning'),
+                                ->badge($results['publishers'], color: 'warning'),
 
                             NavigationItem::make(__('Translators'))
                                 ->url(TranslatorResource::getUrl())
-                                ->badge(Translator::count(), color: 'warning'),
+                                ->badge($results['translators'], color: 'warning'),
 
                             NavigationItem::make(__('Revisors'))
                                 ->url(RevisorResource::getUrl())
-                                ->badge(Revisor::count(), color: 'warning'),
+                                ->badge($results['revisors'], color: 'warning'),
 
                             NavigationItem::make(__('Subjects'))
                                 ->url(SubjectResource::getUrl())
-                                ->badge(Subject::count(), color: 'warning'),
+                                ->badge($results['subjects'], color: 'warning'),
 
                             NavigationItem::make(__('Series'))
                                 ->url(SeriesResource::getUrl())
-                                ->badge(Series::count(), color: 'warning'),
+                                ->badge($results['series'], color: 'warning'),
 
                         ]),
                     NavigationGroup::make(__('Books'))
@@ -103,11 +119,11 @@ class AdminPanelProvider extends PanelProvider
                         ->items([
                             NavigationItem::make(__('Books'))
                                 ->url(BookResource::getUrl())
-                                ->badge(Book::count(), color: 'warning'),
+                                ->badge($results['books'], color: 'warning'),
 
                             NavigationItem::make(__('Editions'))
                                 ->url(EditionResource::getUrl())
-                                ->badge(Edition::count(), color: 'warning'),
+                                ->badge($results['editions'], color: 'warning'),
                         ]),
                 ]);
 
