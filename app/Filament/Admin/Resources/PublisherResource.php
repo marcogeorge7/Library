@@ -2,28 +2,34 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\PublisherResource\Pages\CreatePublisher;
-use App\Filament\Admin\Resources\PublisherResource\Pages\EditPublisher;
-use App\Filament\Admin\Resources\PublisherResource\Pages\ListPublishers;
-use App\Filament\Admin\Resources\PublisherResource\Pages\ViewPublisher;
-use App\Models\Publisher;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Infolists\Components\TextEntry;
+use App\Models\Publisher;
+use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Forms\Components\Section;
 use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\ForceDeleteAction;
-use Filament\Tables\Actions\ForceDeleteBulkAction;
-use Filament\Tables\Actions\RestoreAction;
-use Filament\Tables\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Filters\TrashedFilter;
-use Filament\Tables\Table;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\ForceDeleteAction;
+use Filament\Tables\Actions\RestoreBulkAction;
+use Filament\Tables\Actions\ForceDeleteBulkAction;
+use App\Filament\Admin\Resources\PublisherResource\Pages\EditPublisher;
+use App\Filament\Admin\Resources\PublisherResource\Pages\ViewPublisher;
+use App\Filament\Admin\Resources\PublisherResource\Pages\ListPublishers;
+use App\Filament\Admin\Resources\PublisherResource\Pages\CreatePublisher;
+use App\Filament\Admin\Resources\PublisherResource\RelationManagers\BooksRelationManager;
+use App\Filament\Admin\Resources\PublisherResource\RelationManagers\EditionsRelationManager;
+use App\Models\Book;
+use Filament\Actions\ViewAction;
+use Filament\Infolists\Components\Section as ComponentsSection;
+use Filament\Tables\Actions\ViewAction as ActionsViewAction;
 
 class PublisherResource extends Resource
 {
@@ -62,17 +68,8 @@ class PublisherResource extends Resource
                 TrashedFilter::make(),
             ])
             ->actions([
+                ActionsViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
-                RestoreAction::make(),
-                ForceDeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                ]),
             ]);
     }
 
@@ -86,6 +83,13 @@ class PublisherResource extends Resource
                             ->label(__('Publisher Name')),
                     ]),
             ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            EditionsRelationManager::class
+        ];
     }
 
     public static function getPages(): array

@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\SeriesResource\Pages;
+use App\Filament\Admin\Resources\SeriesResource\RelationManagers\BooksRelationManager;
 use App\Models\Series;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -57,7 +58,7 @@ class SeriesResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            BooksRelationManager::class
         ];
     }
 
