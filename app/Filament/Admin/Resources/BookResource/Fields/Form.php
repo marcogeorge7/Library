@@ -47,7 +47,10 @@ class Form
                         ->disabled(fn ($record) => $record ?? false),
 
                     Select::make('series_id')
-                        ->relationship('series', 'name')
+                        ->options(function(Get $get)
+                        {
+                           return Series::whereRelation('books','category_id', $get('category_id'))->pluck('name','id');
+                        })
                         ->preload()
                         ->label(__('Series'))
                         ->searchable()
