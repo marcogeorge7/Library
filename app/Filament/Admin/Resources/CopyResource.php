@@ -3,15 +3,19 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Models\Copy;
+use App\Services\BarcodeLabelGenerator;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Collection;
 
 class CopyResource extends Resource
 {
@@ -47,11 +51,11 @@ class CopyResource extends Resource
 
                 Placeholder::make('created_at')
                     ->label('Created Date')
-                    ->content(fn (?Copy $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Copy $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
                     ->label('Last Modified Date')
-                    ->content(fn (?Copy $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+                    ->content(fn(?Copy $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -61,7 +65,7 @@ class CopyResource extends Resource
             ->columns([
                 TextColumn::make('barcode'),
 
-                TextColumn::make('edition.name')
+                TextColumn::make('book.name')
                     ->searchable()
                     ->sortable(),
 
@@ -71,10 +75,49 @@ class CopyResource extends Resource
             ])
             ->filters([])
             ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
+//                EditAction::make(),
+//                DeleteAction::make(),
+                Action::make('view_edition')
+                    ->label('View Edition')
+                    ->icon('heroicon-o-eye')
+                    ->url(fn(Copy $record): string => \App\Filament\Admin\Resources\EditionResource::getUrl('view', ['record' => $record->edition_id]))
+                    ->openUrlInNewTab(false),
             ])
-            ->bulkActions([]);
+            ->bulkActions([
+                BulkAction::make('print_selected_barcodes')
+                    ->label('Print Barcode Labels (40 per page)')
+                    ->icon('heroicon-o-printer')
+                    ->form([
+                        \Filament\Forms\Components\TextInput::make('count')
+                            ->label('Labels per selected copy')
+                            ->numeric()
+                            ->minValue(1)
+                            ->default(1)
+                            ->required(),
+                    ])
+                    ->action(function (Collection $records, array $data) {
+                        $items = [];
+                        $count = (int)($data['count'] ?? 1);
+                        foreach ($records as $copy) {
+                            for ($i = 0; $i < $count; $i++) {
+                                $items[] = [
+                                    'name' => $copy->book_name ?? 'Book',
+                                    'barcode' => $copy->barcode,
+                                ];
+                            }
+                        }
+
+                        $generator = new BarcodeLabelGenerator();
+                        $pdfContent = $generator->generate($items, 4, 10);
+
+                        return response()->streamDownload(
+                            fn() => print($pdfContent),
+                            'copy-barcodes-' . now()->format('Ymd-His') . '.pdf',
+                            ['Content-Type' => 'application/pdf']
+                        );
+                    })
+                    ->deselectRecordsAfterCompletion(),
+            ]);
     }
 
     public static function getPages(): array
