@@ -10,11 +10,11 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkAction;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
 class CopyResource extends Resource
@@ -73,8 +73,17 @@ class CopyResource extends Resource
 
                 TextColumn::make('is_printed'),
             ])
+            // Eager-load relationships to avoid N+1 queries on the index and speed up previewing many records.
+            ->modifyQueryUsing(function (Builder $query) {
+                return $query->with(['book:name']);
+            })
+            // Allow large pages to make it easy to preview many/all records at once.
+            ->paginationPageOptions([25, 50, 100, 200, 500, 1000])
+            // Make rows clickable to open the record view for quick preview.
+            ->recordUrl(fn(Copy $record): string => EditionResource::getUrl('view', ['record' => $record->edition_id]))
             ->filters([])
             ->actions([
+                ViewAction::make(),
 //                EditAction::make(),
 //                DeleteAction::make(),
                 Action::make('view_edition')

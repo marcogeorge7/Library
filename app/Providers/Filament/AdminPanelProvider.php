@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Filament\Admin\Resources\AuthorResource;
 use App\Filament\Admin\Resources\BookResource;
 use App\Filament\Admin\Resources\CategoryResource;
+use App\Filament\Admin\Resources\CopyResource;
 use App\Filament\Admin\Resources\EditionResource;
 use App\Filament\Admin\Resources\PublisherResource;
 use App\Filament\Admin\Resources\RevisorResource;
@@ -31,6 +32,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
@@ -61,16 +63,18 @@ class AdminPanelProvider extends PanelProvider
                     'translators',
                     'revisors',
                     'editions',
-
+                    'copies',
                 ];
-                $query = collect($tables)
-                    ->map(fn ($table) => "SELECT '$table' AS table_name, COUNT(*) AS total FROM $table")
-                    ->implode(' UNION ALL ');
+                $results = Cache::remember('admin_tables_count', 60, function () use ($tables) {
+                    $parts = [];
+                    foreach ($tables as $table) {
+                        $where = Schema::hasColumn($table, 'deleted_at') ? " WHERE `deleted_at` IS NULL" : '';
+                        $parts[] = "SELECT '" . $table . "' AS table_name, COUNT(*) AS total FROM `" . $table . "`" . $where;
+                    }
 
-                $results = collect(DB::select($query))->pluck('total', 'table_name');
+                    $query = implode(' UNION ALL ', $parts);
 
-                $results = Cache::remember('admin_tables_count', 60, function () use ($results) {
-                    return $results;
+                    return collect(DB::select($query))->pluck('total', 'table_name');
                 });
 
                 return $builder->groups([
@@ -124,6 +128,10 @@ class AdminPanelProvider extends PanelProvider
                             NavigationItem::make(__('Editions'))
                                 ->url(EditionResource::getUrl())
                                 ->badge($results['editions'], color: 'warning'),
+
+                            NavigationItem::make('النسخ')
+                                ->url(CopyResource::getUrl())
+                                ->badge($results['copies'], color: 'warning'),
                         ]),
                 ]);
 
