@@ -4,6 +4,8 @@ namespace App\Providers\Filament;
 
 use App\Filament\Admin\Resources\AuthorResource;
 use App\Filament\Admin\Resources\BookResource;
+use App\Filament\Admin\Resources\BorrowRequestResource;
+use App\Filament\Admin\Resources\BorrowerResource;
 use App\Filament\Admin\Resources\CategoryResource;
 use App\Filament\Admin\Resources\CopyResource;
 use App\Filament\Admin\Resources\EditionResource;
@@ -64,6 +66,8 @@ class AdminPanelProvider extends PanelProvider
                     'revisors',
                     'editions',
                     'copies',
+                    'borrowers',
+                    'borrow_requests',
                 ];
                 $results = Cache::remember('admin_tables_count', 60, function () use ($tables) {
                     $parts = [];
@@ -132,6 +136,18 @@ class AdminPanelProvider extends PanelProvider
                             NavigationItem::make('النسخ')
                                 ->url(CopyResource::getUrl())
                                 ->badge($results['copies'], color: 'warning'),
+                        ]),
+
+                    NavigationGroup::make(__('Borrowing'))
+                        ->icon('heroicon-o-arrow-path-rounded-square')
+                        ->items([
+                            NavigationItem::make(__('Borrowers'))
+                                ->url(BorrowerResource::getUrl())
+                                ->badge($results['borrowers'] ?? 0, color: 'warning'),
+
+                            NavigationItem::make(__('Borrow Requests'))
+                                ->url(BorrowRequestResource::getUrl())
+                                ->badge($results['borrow_requests'] ?? 0, color: 'warning'),
                         ]),
                 ]);
 

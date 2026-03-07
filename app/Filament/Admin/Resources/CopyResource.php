@@ -72,6 +72,10 @@ class CopyResource extends Resource
                 TextColumn::make('status'),
 
                 TextColumn::make('is_printed'),
+
+                TextColumn::make('activeBorrowRequest.borrower.name')
+                    ->label('Borrowed By')
+                    ->placeholder('—'),
             ])
             // Eager-load relationships to avoid N+1 queries on the index and speed up previewing many records.
             ->modifyQueryUsing(function (Builder $query) {

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -43,5 +45,16 @@ class Copy extends Model
     public function scopeBorrowed(Builder $query)
     {
         return $query->where('is_borrowed', true);
+    }
+
+    public function borrowRequests(): HasMany
+    {
+        return $this->hasMany(BorrowRequest::class);
+    }
+
+    public function activeBorrowRequest(): HasOne
+    {
+        return $this->hasOne(BorrowRequest::class)
+            ->whereIn('status', ['approved']);
     }
 }
