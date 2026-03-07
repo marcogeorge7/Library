@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Borrower\Pages\BookSearch;
 use App\Filament\Borrower\Pages\Dashboard;
+use App\Filament\Borrower\Pages\Login;
 use App\Filament\Borrower\Pages\MyRequests;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -26,7 +27,7 @@ class BorrowerPanelProvider extends PanelProvider
         return $panel
             ->id('borrowers')
             ->path('borrower')
-            ->login()
+            ->login(Login::class)
             ->authGuard('borrowers')
             ->colors(['primary' => Color::Blue])
             ->discoverPages(in: app_path('Filament/Borrower/Pages'), for: 'App\\Filament\\Borrower\\Pages')
