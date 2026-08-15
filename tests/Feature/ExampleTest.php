@@ -12,10 +12,10 @@ class ExampleTest extends TestCase
      *
      * @test
      */
-    public function the_application_returns_a_successful_response(): void
+    public function the_application_redirects_to_the_borrower_login(): void
     {
         $response = $this->get('/');
 
-        $response->assertStatus(200);
+        $response->assertRedirect('/borrower/login');
     }
 }

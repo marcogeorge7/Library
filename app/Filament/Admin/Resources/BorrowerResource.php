@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\BorrowerResource\Pages;
 use App\Filament\Admin\Resources\BorrowerResource\RelationManagers;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Borrower;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
@@ -15,9 +16,12 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class BorrowerResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Borrower::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
@@ -25,6 +29,14 @@ class BorrowerResource extends Resource
     protected static ?string $navigationGroup = 'Borrowing';
 
     protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Member ID' => $record->member_id ?? '—',
+            'Status' => $record->is_active ? 'Active' : 'Inactive',
+        ];
+    }
 
     public static function form(Form $form): Form
     {

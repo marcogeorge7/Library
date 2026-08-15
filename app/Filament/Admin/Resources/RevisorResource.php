@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\RevisorResource\Pages;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Revisor;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -15,9 +16,13 @@ use Filament\Tables\Table;
 
 class RevisorResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Revisor::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+
+    protected static ?string $recordTitleAttribute = 'name';
 
     protected static ?string $modelLabel = 'المراجع';
 
@@ -32,7 +37,8 @@ class RevisorResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->label(__('Revisor Name'))
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
                     ]),
             ]);
     }

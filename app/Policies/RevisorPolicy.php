@@ -2,9 +2,10 @@
 
 namespace App\Policies;
 
+use App\Policies\Concerns\AuthorizesViaPermissions;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
 class RevisorPolicy
 {
-    /**
-     * Create a new policy instance.
-     */
+    use HandlesAuthorization, AuthorizesViaPermissions;
 }

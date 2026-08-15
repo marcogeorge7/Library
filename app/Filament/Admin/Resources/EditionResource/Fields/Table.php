@@ -21,6 +21,11 @@ class Table
                 ->getStateUsing(fn ($record) => $record->partNumber)
                 ->label(__('Part Number')),
 
+            TextColumn::make('part_name')
+                ->label(__('Part Name'))
+                ->placeholder('—')
+                ->searchable(),
+
             TextColumn::make('publisher.name')
                 ->label(__('Publisher Name'))
                 ->searchable()

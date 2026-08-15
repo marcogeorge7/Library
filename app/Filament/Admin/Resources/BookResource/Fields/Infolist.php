@@ -26,12 +26,16 @@ class Infolist
 
                     TextEntry::make('series.name')
                         ->label(__('Series Name'))
-                        ->url(rescue(callback: fn (Book $record) => SeriesResource::getUrl('view', ['record' => $record->series]), rescue : '#', report: false)),
+                        ->url(fn (Book $record) => $record->series ? SeriesResource::getUrl('view', ['record' => $record->series]) : null),
 
                     TextEntry::make('author_name')
                         ->label(__('Author Name'))
-                        ->getStateUsing(fn (Book $record) => $record->author()->first()->name)
-                        ->url(rescue(callback: fn (Book $record) => AuthorResource::getUrl('view', ['record' => $record->author()->first()]), rescue : '#', report: false)),
+                        ->getStateUsing(fn (Book $record) => $record->author()->first()?->name)
+                        ->url(function (Book $record) {
+                            $author = $record->author()->first();
+
+                            return $author ? AuthorResource::getUrl('view', ['record' => $author]) : null;
+                        }),
 
                     TextEntry::make('copies_no')
                         ->label(__('Copies Number'))

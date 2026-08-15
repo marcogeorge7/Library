@@ -15,9 +15,7 @@ class SubjectSeeder extends Seeder
         $subjects = json_decode(file_get_contents(database_path('/data/subjects.json')));
 
         foreach ($subjects as $subject) {
-            Subject::create([
-                'name' => $subject->name,
-            ]);
+            Subject::firstOrCreate(['name' => $subject->name]);
         }
     }
 }

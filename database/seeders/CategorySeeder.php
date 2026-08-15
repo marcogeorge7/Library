@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
                 database_path('data/categories.json')), true);
 
         foreach ($categories as $category) {
-            Category::create($category);
+            Category::firstOrCreate(['name' => $category['name']], $category);
         }
     }
 }

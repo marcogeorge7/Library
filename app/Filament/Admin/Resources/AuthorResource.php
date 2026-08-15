@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\AuthorResource\Pages;
 use App\Filament\Admin\Resources\AuthorResource\RelationManagers\BooksRelationManager;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Author;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,14 +15,22 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class AuthorResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Author::class;
 
     //    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
 
     protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return ['Books' => (string) $record->books()->count()];
+    }
 
     public static function getModelLabel(): string
     {
@@ -40,7 +49,8 @@ class AuthorResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label(__('Author Name'))
                     ->required()
-                    ->maxLength(100),
+                    ->maxLength(100)
+                    ->unique(ignoreRecord: true),
             ]);
     }
 

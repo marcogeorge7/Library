@@ -2,23 +2,26 @@
 
 namespace App\Filament\Admin\Resources;
 
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Copy;
-use App\Services\BarcodeLabelGenerator;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class CopyResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Copy::class;
 
     protected static ?string $slug = 'copies';
@@ -31,22 +34,32 @@ class CopyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        $details = ['Book' => $record->book?->name ?? '—'];
+
+        $details['Status'] = $record->is_borrowed
+            ? 'Borrowed by '.($record->activeBorrowRequest?->borrower?->name ?? 'unknown')
+            : 'Available';
+
+        return $details;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('barcode')
-                    ->required(),
+                    ->required()
+                    ->unique(ignoreRecord: true),
 
                 Select::make('edition_id')
-                    ->relationship('edition', 'name')
+                    ->relationship('edition', 'id')
+                    ->getOptionLabelFromRecordUsing(
+                        fn ($record) => trim($record->book?->name.' — '.$record?->publisher?->name, ' —')
+                    )
                     ->searchable()
-                    ->required(),
-
-                TextInput::make('status')
-                    ->required(),
-
-                TextInput::make('is_printed')
+                    ->preload()
                     ->required(),
 
                 Placeholder::make('created_at')
@@ -69,9 +82,25 @@ class CopyResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('status'),
+                TextColumn::make('book.series.name')
+                    ->label(__('Series Name'))
+                    ->placeholder('—')
+                    ->searchable()
+                    ->sortable(),
 
-                TextColumn::make('is_printed'),
+                TextColumn::make('edition.part_name')
+                    ->label(__('Part Name'))
+                    ->placeholder('—')
+                    ->searchable()
+                    ->sortable(),
+
+                IconColumn::make('is_borrowed')
+                    ->label(__('Is Borrowed'))
+                    ->boolean(),
+
+                IconColumn::make('is_printed')
+                    ->label(__('Is Printed'))
+                    ->boolean(),
 
                 TextColumn::make('activeBorrowRequest.borrower.name')
                     ->label('Borrowed By')
@@ -79,7 +108,7 @@ class CopyResource extends Resource
             ])
             // Eager-load relationships to avoid N+1 queries on the index and speed up previewing many records.
             ->modifyQueryUsing(function (Builder $query) {
-                return $query->with(['book:name']);
+                return $query->with(['book.series', 'edition', 'activeBorrowRequest.borrower']);
             })
             // Allow large pages to make it easy to preview many/all records at once.
             ->paginationPageOptions([25, 50, 100, 200, 500, 1000])
@@ -88,49 +117,16 @@ class CopyResource extends Resource
             ->filters([])
             ->actions([
                 ViewAction::make(),
-//                EditAction::make(),
-//                DeleteAction::make(),
+                EditAction::make()
+                    ->label('Edit Barcode')
+                    ->icon('heroicon-o-pencil-square'),
                 Action::make('view_edition')
                     ->label('View Edition')
                     ->icon('heroicon-o-eye')
                     ->url(fn(Copy $record): string => \App\Filament\Admin\Resources\EditionResource::getUrl('view', ['record' => $record->edition_id]))
                     ->openUrlInNewTab(false),
             ])
-            ->bulkActions([
-                BulkAction::make('print_selected_barcodes')
-                    ->label('Print Barcode Labels (40 per page)')
-                    ->icon('heroicon-o-printer')
-                    ->form([
-                        \Filament\Forms\Components\TextInput::make('count')
-                            ->label('Labels per selected copy')
-                            ->numeric()
-                            ->minValue(1)
-                            ->default(1)
-                            ->required(),
-                    ])
-                    ->action(function (Collection $records, array $data) {
-                        $items = [];
-                        $count = (int)($data['count'] ?? 1);
-                        foreach ($records as $copy) {
-                            for ($i = 0; $i < $count; $i++) {
-                                $items[] = [
-                                    'name' => $copy->book_name ?? 'Book',
-                                    'barcode' => $copy->barcode,
-                                ];
-                            }
-                        }
-
-                        $generator = new BarcodeLabelGenerator();
-                        $pdfContent = $generator->generate($items, 4, 10);
-
-                        return response()->streamDownload(
-                            fn() => print($pdfContent),
-                            'copy-barcodes-' . now()->format('Ymd-His') . '.pdf',
-                            ['Content-Type' => 'application/pdf']
-                        );
-                    })
-                    ->deselectRecordsAfterCompletion(),
-            ]);
+            ->bulkActions([]);
     }
 
     public static function getPages(): array

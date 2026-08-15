@@ -14,7 +14,7 @@ class TranslatorSeeder extends Seeder
                 database_path('data/translators.json')), true);
 
         foreach ($translators as $translator) {
-            Translator::create($translator);
+            Translator::firstOrCreate(['name' => $translator['name']], $translator);
         }
     }
 }

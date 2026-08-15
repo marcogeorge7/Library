@@ -16,7 +16,6 @@ class PublisherFactory extends Factory
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'name' => $this->faker->name(),
-            'string' => $this->faker->word(),
         ];
     }
 }

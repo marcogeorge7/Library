@@ -40,7 +40,7 @@ class GetResourcesForPermissions
 
     public static function syncPermissionsToSuperadmin()
     {
-        $role = Role::where('name', 'Admin')->first();
+        $role = Role::firstOrCreate(['name' => 'Admin']);
 
         $role->givePermissionTo(Permission::all());
 

@@ -12,7 +12,7 @@ class BarCode
 
     private const ALPHABET_SIZE = 26;
 
-    private const DEFAULT_SERIES_POSITION = '01';
+    private const STANDALONE_POSITION = 1;
 
     public static function toAlphabeticCode(int $id, int $length = 3): string
     {
@@ -52,18 +52,27 @@ class BarCode
     {
         $book = $edition->book;
         $categoryCode = self::toAlphabeticCode($book->category->id, 1);
-        $bookOrder = self::padNumber($book->order);
 
-        $bookInSeries = $book?->series?->bookOrderInSeries($book->id) ?? null;
+        // book->order is the group's shared slot in the category: every book in a
+        // series shares the same value (inherited from whichever book first claimed
+        // it -- see BooksImport::resolveSeriesAndOrder() / CreateBook), and a
+        // standalone book's own value doubles as its one-member group's slot.
+        $groupOrder = self::padNumber($book->order);
 
-        $seriesCode = $book->series_id
-            ? self::padNumber($bookInSeries, 2)
-            : self::DEFAULT_SERIES_POSITION;
+        // Plain 2-digit number, not the alphabetic scheme used for category. Position
+        // of this book within its group, in join order -- the 1st book of a series
+        // (or a standalone book, which is always alone) is "01", the 2nd is "02", etc.
+        // Most series have well under 100 members, so this is unique within nearly
+        // every series; the %100 wrap mirrors the same collision tradeoff already
+        // accepted for the part/edition segments on implausibly large counts.
+        $memberPosition = $book->series_id
+            ? self::padNumber($book->series->bookOrderInSeries($book->id) % 100, 2)
+            : self::padNumber(self::STANDALONE_POSITION, 2);
 
-        $bookCode = $bookOrder.$seriesCode;
+        $partCode = self::padNumber($edition->partCode, 2);
         $editionNumber = $book->editionOrderInBook($edition->id);
 
-        return "{$categoryCode}{$bookCode}{$editionNumber}";
+        return "{$categoryCode}{$groupOrder}{$memberPosition}{$partCode}{$editionNumber}";
     }
 
     private static function validateCode(string $code, int $length): void

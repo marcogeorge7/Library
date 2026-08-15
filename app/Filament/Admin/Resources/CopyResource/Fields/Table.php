@@ -14,12 +14,19 @@ class Table
                 ->label(__('Barcode'))
                 ->copyable()
                 ->searchable(),
-            IconColumn::make('is_borrowed')
-                ->boolean()
-                ->label(__('Is Borrowed')),
+            TextColumn::make('book.name')
+                ->label(__('Book Name'))
+                ->visible(fn () => ! $editionId),
             TextColumn::make('edition.name')
                 ->visible(fn () => ! $editionId)
                 ->label(__('Edition Name')),
+
+            IconColumn::make('is_borrowed')
+                ->boolean()
+                ->label(__('Is Borrowed')),
+            IconColumn::make('is_printed')
+                ->boolean()
+                ->label(__('Is Printed')),
         ];
     }
 }

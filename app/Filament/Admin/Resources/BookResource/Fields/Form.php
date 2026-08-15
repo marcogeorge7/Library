@@ -40,7 +40,8 @@ class Form
                                 ->label(__('Add Category'))
                                 ->form([
                                     TextInput::make('name')
-                                        ->required(),
+                                        ->required()
+                                        ->unique(table: 'categories'),
                                 ])->action(function (array $data) {
                                     Category::create($data);
                                     Notification::make()
@@ -52,7 +53,7 @@ class Form
                         ->required(),
 
                     Select::make('author_id')
-                        ->relationship('author', 'name')
+                        ->options(fn () => Author::pluck('name', 'id'))
                         ->label(__('Author'))
                         ->preload()
                         ->hintAction(
@@ -60,7 +61,8 @@ class Form
                                 ->label(__('Add Author'))
                                 ->form([
                                     TextInput::make('name')
-                                        ->required(),
+                                        ->required()
+                                        ->unique(table: 'authors'),
                                 ])->action(function (array $data) {
                                     Author::create($data);
                                     Notification::make()
@@ -79,7 +81,15 @@ class Form
 
                     Select::make('series_id')
                         ->options(function (Get $get) {
-                            return Series::whereRelation('books', 'category_id', $get('category_id'))->pluck('name', 'id');
+                            // Include series already used in this category, PLUS
+                            // brand-new series with zero books yet -- otherwise a
+                            // series just created via "Add Series" (right below)
+                            // could never be selected for its own first book.
+                            return Series::where(
+                                fn ($query) => $query
+                                    ->whereRelation('books', 'category_id', $get('category_id'))
+                                    ->orWhereDoesntHave('books')
+                            )->pluck('name', 'id');
                         })
                         ->preload()
                         ->label(__('Series'))
@@ -113,7 +123,8 @@ class Form
                                 ->label(__('Add Publisher'))
                                 ->form([
                                     TextInput::make('name')
-                                        ->required(),
+                                        ->required()
+                                        ->unique(table: 'publishers'),
                                 ])->action(function (array $data) {
                                     Publisher::create($data);
                                     Notification::make()
@@ -128,6 +139,9 @@ class Form
                         ->minValue(1)
                         ->maxValue(100)
                         ->required(),
+
+                    TextInput::make('part_name')
+                        ->label(__('Part Name')),
 
                     DatePicker::make('publish_year')
                         ->label(__('Publish Year'))

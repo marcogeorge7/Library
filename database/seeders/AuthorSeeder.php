@@ -14,7 +14,7 @@ class AuthorSeeder extends Seeder
                 database_path('data/authors.json')), true);
 
         foreach ($authors as $author) {
-            Author::create($author);
+            Author::firstOrCreate(['name' => $author['name']], $author);
         }
 
     }

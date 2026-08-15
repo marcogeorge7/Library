@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Enum\BorrowRequestStatusEnum;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
@@ -20,6 +22,7 @@ class Copy extends Model
     protected $casts = [
         'is_printed' => 'boolean',
         'is_borrowed' => 'boolean',
+        'printed_at' => 'datetime',
     ];
 
     public function edition(): BelongsTo
@@ -55,6 +58,11 @@ class Copy extends Model
     public function activeBorrowRequest(): HasOne
     {
         return $this->hasOne(BorrowRequest::class)
-            ->whereIn('status', ['approved']);
+            ->where('status', BorrowRequestStatusEnum::Approved);
+    }
+
+    public function printJobs(): BelongsToMany
+    {
+        return $this->belongsToMany(PrintJob::class, 'print_job_copy')->withTimestamps();
     }
 }

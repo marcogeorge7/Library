@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Admin\Pages\MergeBooks;
+use App\Filament\Admin\Pages\PrintBarcodes;
 use App\Filament\Admin\Resources\AuthorResource;
 use App\Filament\Admin\Resources\BookResource;
 use App\Filament\Admin\Resources\BorrowRequestResource;
@@ -9,6 +11,7 @@ use App\Filament\Admin\Resources\BorrowerResource;
 use App\Filament\Admin\Resources\CategoryResource;
 use App\Filament\Admin\Resources\CopyResource;
 use App\Filament\Admin\Resources\EditionResource;
+use App\Filament\Admin\Resources\PrintJobResource;
 use App\Filament\Admin\Resources\PublisherResource;
 use App\Filament\Admin\Resources\RevisorResource;
 use App\Filament\Admin\Resources\SeriesResource;
@@ -68,6 +71,7 @@ class AdminPanelProvider extends PanelProvider
                     'copies',
                     'borrowers',
                     'borrow_requests',
+                    'print_jobs',
                 ];
                 $results = Cache::remember('admin_tables_count', 60, function () use ($tables) {
                     $parts = [];
@@ -136,6 +140,16 @@ class AdminPanelProvider extends PanelProvider
                             NavigationItem::make('النسخ')
                                 ->url(CopyResource::getUrl())
                                 ->badge($results['copies'], color: 'warning'),
+
+                            NavigationItem::make('Merge Books')
+                                ->url(MergeBooks::getUrl()),
+
+                            NavigationItem::make('Print Barcodes')
+                                ->url(PrintBarcodes::getUrl()),
+
+                            NavigationItem::make('Print History')
+                                ->url(PrintJobResource::getUrl())
+                                ->badge($results['print_jobs'] ?? 0, color: 'warning'),
                         ]),
 
                     NavigationGroup::make(__('Borrowing'))
@@ -155,7 +169,6 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

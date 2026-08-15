@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\BookResource\Pages\CreateBook;
 use App\Filament\Admin\Resources\BookResource\Pages\EditBook;
 use App\Filament\Admin\Resources\BookResource\Pages\ListBooks;
 use App\Filament\Admin\Resources\BookResource\Pages\ViewBook;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Book;
 use App\Models\Publisher;
 use App\Models\Series;
@@ -22,9 +23,12 @@ use Filament\Resources\Resource;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class BookResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Book::class;
 
     protected static ?string $slug = 'books';
@@ -34,6 +38,29 @@ class BookResource extends Resource
     protected static ?string $modelLabel = 'كتاب';
 
     protected static ?string $pluralModelLabel = 'كتب';
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'old_code'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        $details = ['Category' => $record->category?->name ?? '—'];
+
+        $authorNames = $record->author->pluck('name')->join(', ');
+        if ($authorNames !== '') {
+            $details['Author'] = $authorNames;
+        }
+
+        if ($record->hasSeries()) {
+            $details['Series'] = $record->series?->name ?? '—';
+        }
+
+        return $details;
+    }
 
     public static function form(Form $form): Form
     {

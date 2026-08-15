@@ -2,23 +2,25 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Services\BarcodeLabelGenerator;
-
 use App\Filament\Admin\Resources\EditionResource\Pages\CreateEdition;
 use App\Filament\Admin\Resources\EditionResource\Pages\EditEdition;
 use App\Filament\Admin\Resources\EditionResource\Pages\ListEditions;
 use App\Filament\Admin\Resources\EditionResource\Pages\ViewEdition;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Edition;
 use Filament\Forms\Form;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class EditionResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Edition::class;
 
     protected static ?string $slug = 'editions';
@@ -28,6 +30,27 @@ class EditionResource extends Resource
     protected static ?string $modelLabel = 'طبعة';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $recordTitleAttribute = 'book.name';
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['book.name', 'part_name'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        $details = [
+            'Book' => $record->book?->name ?? '—',
+            'Publisher' => $record->publisher?->name ?? '—',
+        ];
+
+        if (filled($record->part_name)) {
+            $details['Part'] = $record->part_name;
+        }
+
+        return $details;
+    }
 
     public static function form(Form $form): Form
     {
@@ -39,42 +62,11 @@ class EditionResource extends Resource
     {
         return $table
             ->columns(EditionResource\Fields\Table::columns())
+            ->modifyQueryUsing(fn (Builder $query) => $query->with(['book', 'publisher', 'translators', 'copies']))
             ->filters([])
             ->actions([
                 EditAction::make(),
                 ViewAction::make(),
-                Action::make('print_copy_barcodes')
-                    ->label('Print Copy Barcode Labels')
-                    ->icon('heroicon-o-printer')
-                    ->form([
-                        \Filament\Forms\Components\TextInput::make('count')
-                            ->label('Labels per copy')
-                            ->numeric()
-                            ->minValue(1)
-                            ->default(1)
-                            ->required(),
-                    ])
-                    ->action(function (Edition $record, array $data) {
-                        $count = (int) ($data['count'] ?? 1);
-                        $items = [];
-                        foreach ($record->copies as $copy) {
-                            for ($i = 0; $i < $count; $i++) {
-                                $items[] = [
-                                    'name' => $copy->book_name ?? 'Book',
-                                    'barcode' => $copy->barcode,
-                                ];
-                            }
-                        }
-
-                        $generator = new BarcodeLabelGenerator();
-                        $pdfContent = $generator->generate($items, 4, 10);
-
-                        return response()->streamDownload(
-                            fn () => print($pdfContent),
-                            'edition-' . $record->id . '-copy-barcodes-' . now()->format('Ymd-His') . '.pdf',
-                            ['Content-Type' => 'application/pdf']
-                        );
-                    })
             ]);
     }
 

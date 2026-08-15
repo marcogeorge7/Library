@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Enum\BorrowRequestStatusEnum;
 use App\Filament\Admin\Resources\BorrowRequestResource\Pages;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\BorrowRequest;
 use App\Models\Borrower;
 use App\Models\Copy;
@@ -19,9 +20,12 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class BorrowRequestResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = BorrowRequest::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-arrow-path-rounded-square';
@@ -33,6 +37,20 @@ class BorrowRequestResource extends Resource
     protected static ?string $modelLabel = 'Borrow Request';
 
     protected static ?string $pluralModelLabel = 'Borrow Requests';
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        $details = [
+            'Borrower' => $record->borrower?->name ?? '—',
+            'Status' => $record->status->label(),
+        ];
+
+        if (filled($record->due_date)) {
+            $details['Due Date'] = $record->due_date->toFormattedDateString();
+        }
+
+        return $details;
+    }
 
     public static function form(Form $form): Form
     {
@@ -101,11 +119,15 @@ class BorrowRequestResource extends Resource
                             ->required(),
                     ])
                     ->action(function (BorrowRequest $record, array $data) {
-                        app(BorrowRequestService::class)->approve(
-                            $record,
-                            Carbon::parse($data['due_date'])
-                        );
-                        Notification::make()->title('Request approved')->success()->send();
+                        try {
+                            app(BorrowRequestService::class)->approve(
+                                $record,
+                                Carbon::parse($data['due_date'])
+                            );
+                            Notification::make()->title('Request approved')->success()->send();
+                        } catch (\RuntimeException $e) {
+                            Notification::make()->title('Could not approve request')->body($e->getMessage())->danger()->send();
+                        }
                     }),
 
                 Action::make('reject')

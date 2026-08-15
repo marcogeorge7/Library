@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\SeriesResource\Pages;
 use App\Filament\Admin\Resources\SeriesResource\RelationManagers\BooksRelationManager;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Series;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -12,12 +13,22 @@ use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class SeriesResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Series::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return ['Books' => (string) $record->books()->count()];
+    }
 
     public static function form(Form $form): Form
     {

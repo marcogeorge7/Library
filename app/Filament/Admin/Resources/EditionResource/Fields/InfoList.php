@@ -25,7 +25,7 @@ class InfoList
 
                     TextEntry::make('book.series.name')
                         ->label(__('Series Name'))
-                        ->url(rescue(fn ($record) => SeriesResource::getUrl('view', ['record' => $record->book->series]), '#', report: false)),
+                        ->url(fn ($record) => $record->book->series ? SeriesResource::getUrl('view', ['record' => $record->book->series]) : null),
 
                     TextEntry::make('publisher.name')
                         ->label(__('Publisher Name'))
@@ -46,6 +46,10 @@ class InfoList
                     TextEntry::make('partCode')
                         ->label(__('Part Number'))
                         ->getStateUsing(fn (Edition $record) => $record->partNumber),
+
+                    TextEntry::make('part_name')
+                        ->label(__('Part Name'))
+                        ->getStateUsing(fn (Edition $record) => $record->part_name ?? '-'),
 
                     IconEntry::make('internal_borrowing')
                         ->label(__('Internal Borrowing'))

@@ -13,9 +13,7 @@ class PublisherSeeder extends Seeder
             file_get_contents(database_path('data/publishers.json'), true),
         );
         foreach ($publishers as $publisher) {
-            Publisher::create([
-                'name' => $publisher->name,
-            ]);
+            Publisher::firstOrCreate(['name' => $publisher->name]);
         }
     }
 }

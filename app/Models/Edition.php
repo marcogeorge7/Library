@@ -50,18 +50,7 @@ class Edition extends Model
 
     public function getPartNumberAttribute()
     {
-        return match ($this->partCode) {
-            default => 'الجزء 1',
-            2 => 'الجزء 2',
-            3 => 'الجزء 3',
-            4 => 'الجزء 4',
-            5 => 'الجزء 5',
-            6 => 'الجزء 6',
-            7 => 'الجزء 7',
-            8 => 'الجزء 8',
-            9 => 'الجزء 9',
-            10 => 'الجزء 10',
-        };
+        return 'الجزء '.($this->partCode ?: 1);
     }
 
     public function scopeInternalBorrowing(Builder $query)

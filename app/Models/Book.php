@@ -48,14 +48,6 @@ class Book extends BaseModel
             ->search($editionId) + 1;
     }
 
-    public function getLastBookOrderInCategory()
-    {
-        $order = $this->category?->books()->orderByDesc('order')->first()?->order ?? 0;
-        $order++;
-
-        return $order;
-    }
-
     public function hasSeries()
     {
         return boolval($this->series_id);
@@ -63,6 +55,8 @@ class Book extends BaseModel
 
     public static function getNextOrderInCategory($categoryId)
     {
-        return Book::query()->where('category_id', $categoryId)->orderByDesc('order')->first('order')->order ?? 0;
+        $max = Book::query()->where('category_id', $categoryId)->max('order');
+
+        return ($max ?? 0) + 1;
     }
 }

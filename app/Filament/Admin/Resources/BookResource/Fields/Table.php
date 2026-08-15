@@ -53,7 +53,7 @@ class Table
 
             TextColumn::make('barcode')
                 ->label(__('Barcode'))
-                ->getStateUsing(fn (Book $record) => $record->copies->first()->barcode)
+                ->getStateUsing(fn (Book $record) => $record->copies->first()?->barcode)
                 ->sortable(),
         ];
     }

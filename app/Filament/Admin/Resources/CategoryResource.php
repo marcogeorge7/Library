@@ -7,6 +7,7 @@ use App\Filament\Admin\Resources\CategoryResource\Pages\EditCategory;
 use App\Filament\Admin\Resources\CategoryResource\Pages\ListCategories;
 use App\Filament\Admin\Resources\CategoryResource\Pages\ViewCategory;
 use App\Filament\Admin\Resources\CategoryResource\RelationManagers\BooksRelationManager;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Category;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -22,9 +23,12 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class CategoryResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-square-3-stack-3d';
@@ -35,13 +39,19 @@ class CategoryResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return ['Books' => (string) $record->books()->count()];
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('name')
                     ->label(__('Category Name'))
-                    ->required(),
+                    ->required()
+                    ->unique(ignoreRecord: true),
             ]);
     }
 
@@ -54,11 +64,11 @@ class CategoryResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('book_count')
+                TextColumn::make('books_count')
                     ->label(__('Books Count'))
-                    ->default(fn (Category $record) => $record->books->count())
                     ->sortable(),
             ])
+            ->modifyQueryUsing(fn ($query) => $query->withCount('books'))
             ->filters([
                 TrashedFilter::make(),
             ])

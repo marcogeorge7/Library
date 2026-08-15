@@ -29,6 +29,9 @@ class Form
                             ->required()
                             ->integer(),
 
+                        TextInput::make('part_name')
+                            ->label(__('Part Name')),
+
                         Select::make('publisher_id')
                             ->relationship('publisher', 'name')
                             ->label(__('Publisher Name'))

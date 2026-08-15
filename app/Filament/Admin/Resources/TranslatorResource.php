@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\TranslatorResource\Pages;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Translator;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -15,9 +16,13 @@ use Filament\Tables\Table;
 
 class TranslatorResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Translator::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $recordTitleAttribute = 'name';
 
     protected static ?string $modelLabel = 'المترجم';
 
@@ -31,7 +36,8 @@ class TranslatorResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
                     ]),
 
             ]);

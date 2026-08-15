@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources;
+use App\Filament\Concerns\HasNormalizedArabicGlobalSearch;
 use App\Models\Subject;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -24,7 +25,11 @@ use Filament\Tables\Table;
 
 class SubjectResource extends Resource
 {
+    use HasNormalizedArabicGlobalSearch;
+
     protected static ?string $model = Subject::class;
+
+    protected static ?string $recordTitleAttribute = 'name';
 
     protected static ?string $modelLabel = 'الموضوع';
 
@@ -76,7 +81,7 @@ class SubjectResource extends Resource
     {
         return $infolist
             ->schema([
-                \Filament\Infolists\Components\Section::make(__('Translator Details'))
+                \Filament\Infolists\Components\Section::make(__('Subject Details'))
                     ->schema([
                         TextEntry::make('name')
                             ->label(__('Subject Name')),

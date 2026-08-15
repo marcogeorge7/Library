@@ -17,15 +17,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        Role::create([
-            'name' => 'Admin',
-        ]);
+        Role::firstOrCreate(['name' => 'Admin']);
 
-        $user = User::firstOrCreate([
-            'name' => 'Ad]min',
-            'email' => 'admin@library.com',
-            'password' => bcrypt('123456789'),
-        ]);
+        $user = User::firstOrCreate(
+            ['email' => 'admin@library.com'],
+            ['name' => 'Admin', 'password' => bcrypt('123456789')],
+        );
 
         $user->assignRole('Admin');
 
