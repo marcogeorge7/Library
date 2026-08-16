@@ -34,6 +34,16 @@ class LandingPageController extends Controller
                 'totalCategories' => Category::count(),
                 'totalAuthors' => Author::count(),
 
+                'topCategories' => Category::withCount('books')
+                    ->orderByDesc('books_count')
+                    ->take(8)
+                    ->get(['id', 'name']),
+
+                'topAuthors' => Author::withCount('books')
+                    ->orderByDesc('books_count')
+                    ->take(8)
+                    ->get(['id', 'name']),
+
                 'recentEditions' => Edition::query()
                     ->where('internal_borrowing', false)
                     ->with(['book.category', 'book.author'])
