@@ -68,6 +68,11 @@ img {
     font-size: 0.875rem;
 }
 
+.utility-bar-center {
+    justify-content: center;
+    text-align: center;
+}
+
 .utility-bar a {
     transition: color 0.15s ease;
 }
@@ -481,6 +486,124 @@ img {
     color: var(--muted);
     font-size: 0.9375rem;
     flex-shrink: 0;
+}
+
+/* Forms (registration) */
+
+.form-shell {
+    max-width: 640px;
+    margin-inline: auto;
+}
+
+.form-shell .section-heading,
+.form-shell .section-sub {
+    text-align: center;
+    justify-content: center;
+}
+
+.form-shell .section-sub {
+    margin-inline: auto;
+}
+
+.form-errors {
+    background: #fdf1f1;
+    border: 1px solid #eabfbf;
+    color: #9b3b3b;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 0.9375rem;
+}
+
+.form-errors ul {
+    margin: 0;
+    padding-inline-start: 20px;
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-size: 0.9375rem;
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.form-optional {
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.form-control {
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 14px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+
+.form-submit {
+    align-self: center;
+    margin-top: 8px;
+}
+
+.form-success {
+    text-align: center;
+    padding: 24px 0;
+}
+
+.form-success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    background: var(--blue-tint);
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.form-success-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.form-success h2 {
+    margin: 0 0 12px;
+}
+
+.form-success p {
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 28px;
+}
+
+@media (max-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Steps */

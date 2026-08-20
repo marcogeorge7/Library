@@ -14,9 +14,8 @@
 <body>
 
     <div class="utility-bar">
-        <div class="wrap">
+        <div class="wrap utility-bar-center">
             <span>نظام الاستعارة الإلكتروني لـ {{ config('app.name') }}</span>
-            <a href="/admin/login">دخول الموظفين</a>
         </div>
     </div>
 
@@ -37,7 +36,8 @@
             </nav>
 
             <div class="header-actions">
-                <a href="/borrower/login" class="btn btn-primary">تسجيل دخول الأعضاء</a>
+                <a href="/register" class="btn btn-outline">تسجيل عضوية جديدة</a>
+                <a href="/borrower/login" class="btn btn-primary">تسجيل الدخول</a>
             </div>
         </div>
     </header>
@@ -58,13 +58,12 @@
                 </p>
 
                 <div class="hero-actions">
-                    <a href="/borrower/login" class="btn btn-primary btn-lg">
-                        تسجيل دخول الأعضاء
+                    <a href="/register" class="btn btn-primary btn-lg">
+                        تسجيل عضوية جديدة
                         <x-heroicon-o-arrow-left />
                     </a>
-                    <a href="#recent" class="btn btn-ghost-light btn-lg">
-                        تصفّح أحدث الإضافات
-                        <x-heroicon-o-arrow-down />
+                    <a href="/borrower/login" class="btn btn-ghost-light btn-lg">
+                        تسجيل الدخول
                     </a>
                 </div>
             </div>
@@ -218,8 +217,8 @@
             </div>
 
             <div class="footer-links">
-                <a href="/borrower/login">تسجيل دخول الأعضاء</a>
-                <a href="/admin/login">دخول الموظفين</a>
+                <a href="/register">تسجيل عضوية جديدة</a>
+                <a href="/borrower/login">تسجيل الدخول</a>
             </div>
         </div>
 

@@ -10,11 +10,14 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 
@@ -47,7 +50,7 @@ class BorrowerResource extends Resource
 
                 TextInput::make('email')
                     ->email()
-                    ->required()
+                    ->nullable()
                     ->unique(ignoreRecord: true),
 
                 TextInput::make('password')
@@ -57,9 +60,20 @@ class BorrowerResource extends Resource
                     ->label('Password'),
 
                 TextInput::make('phone')
+                    ->tel()
+                    ->unique(ignoreRecord: true)
+                    ->nullable(),
+
+                TextInput::make('national_id')
+                    ->label('National ID')
+                    ->unique(ignoreRecord: true)
+                    ->nullable(),
+
+                TextInput::make('address')
                     ->nullable(),
 
                 Toggle::make('is_active')
+                    ->label('Active (approved)')
                     ->default(true),
 
                 Placeholder::make('member_id')
@@ -91,7 +105,28 @@ class BorrowerResource extends Resource
                     ->dateTime()
                     ->sortable(),
             ])
+            ->filters([
+                TernaryFilter::make('is_active')
+                    ->label('Status')
+                    ->placeholder('All')
+                    ->trueLabel('Active')
+                    ->falseLabel('Pending approval'),
+            ])
             ->actions([
+                Action::make('approve')
+                    ->label('Approve')
+                    ->icon('heroicon-o-check-circle')
+                    ->color('success')
+                    ->visible(fn(Borrower $record) => ! $record->is_active)
+                    ->requiresConfirmation()
+                    ->action(function (Borrower $record) {
+                        $record->update(['is_active' => true]);
+
+                        Notification::make()
+                            ->title('Borrower approved')
+                            ->success()
+                            ->send();
+                    }),
                 ViewAction::make(),
                 EditAction::make(),
             ]);

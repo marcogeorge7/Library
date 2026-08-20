@@ -20,6 +20,8 @@ class Borrower extends Authenticatable implements FilamentUser
         'password',
         'member_id',
         'phone',
+        'address',
+        'national_id',
         'is_active',
     ];
 
